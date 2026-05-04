@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbora Hlinková — UX Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f3ee;
+    --accent: #2d5a3d;
+    --muted: #888880;
+    --line: #d8d5ce;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  nav .logo span {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.8s;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--line);
+  }
+
+  .btn-ghost:hover {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* SECTION */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+  }
+
+  /* WORK */
+  .work-grid {
+    display: grid;
+    gap: 0;
+  }
+
+  .case {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+    transition: opacity 0.2s;
+  }
+
+  .case:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .case:hover .case-num {
+    color: var(--accent);
+  }
+
+  .case-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .case-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.9rem;
+    color: var(--line);
+    transition: color 0.3s;
+  }
+
+  .case h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  .case-body p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .case-body strong {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    margin-top: 1.5rem;
+  }
+
+  .case-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: gap 0.2s;
+  }
+
+  .case-link:hover { gap: 0.8rem; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-grid h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .about-grid h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+
+  .contact-inner h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 500px;
+  }
+
+  .contact-inner h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .divider { padding: 0 1.5rem; }
+    .case { grid-template-columns: 1fr; gap: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-inner { flex-direction: column; align-items: flex-start; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Barbora <span>Hlinková</span></div>
+  <a href="mailto:katerina.cakin@aidetem.cz">katerina.cakin@aidetem.cz</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">UX Design · Vzdělávání · Praha</div>
+    <h1>Designuji pro<br>lidi, kteří se<br><em>učí.</em></h1>
+    <p>Učím IT a robotiku na ZŠ Vela. Stavím vzdělávací hry na Zvídavě.cz. Vím, jak vypadá moment, kdy žák aplikaci zavře — protože ji nepochopil.</p>
+    <div class="hero-links">
+      <a href="#prace" class="btn">Moje práce</a>
+      <a href="#o-mne" class="btn btn-ghost">O mně</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- WORK -->
+<section id="prace">
+  <div class="section-label">Vybrané projekty</div>
+  <div class="work-grid">
+
+    <!-- Case 1: H2GP -->
+    <div class="case">
+      <div class="case-meta">
+        <span class="case-num">01</span>
+        <h2>H2 Grand Prix — Redesign webu</h2>
+        <div class="case-tags">
+          <span class="tag">UX/UI Design</span>
+          <span class="tag">Redesign</span>
+          <span class="tag">Živý projekt</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <strong>Výzva</strong>
+        <p>Původní web byl vizuálně přehlcený — sytá modrá dominovala celé stránce a tři věkové programy (Explorer, Sprint, Pro) byly těžko rozlišitelné. Učitel hledající program pro svou třídu se těžko orientoval.</p>
+        <strong>Řešení</strong>
+        <p>Bílý základ místo modré okamžitě zvýšil čitelnost. Tři programy jsem přestrukturovala do čistých karet s jasnou věkovou hierarchií (7–9, 10–13, 13–17). Obrázky produktů jsem odclipovala od pozadí. Senior designér doladil barevné tóny do finální podoby.</p>
+        <strong>Výsledek</strong>
+        <p>Web je v produkci a slouží školám po celém světě.</p>
+        <a href="https://www.h2grandprix.com" target="_blank" class="case-link">Zobrazit živý web →</a>
+      </div>
+    </div>
+
+    <!-- Case 2: Zvídavě -->
+    <div class="case">
+      <div class="case-meta">
+        <span class="case-num">02</span>
+        <h2>Zvídavě.cz — Vzdělávací hry bez dark patterns</h2>
+        <div class="case-tags">
+          <span class="tag">Vlastní projekt</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">EdTech</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <strong>Výzva</strong>
+        <p>Vzdělávací aplikace pro děti často spoléhají na vnější motivaci — body, časový tlak, odměny. Chtěla jsem vytvořit hry, které fungují jinak: bez stresu, bez závislosti, s bezpečným prostorem pro chybu.</p>
+        <strong>Řešení</strong>
+        <p>Sadu single-file HTML her postavenou na vlastním etickém checklistu (18 principů vycházejících z SDT, Hejného metodiky, NVC a Privacy by Design). Každá hra je anonymní, offline, bez časového tlaku.</p>
+        <strong>Co jsem se naučila</strong>
+        <p>Vrstvička ukázala, že i dobře míněný design může přehlcovat — na desktopu dostávali žáci příliš informací najednou. Tohle pozorování přímo ovlivnilo návrh dalších her.</p>
+        <a href="https://zvidave.cz" target="_blank" class="case-link">Zobrazit Zvídavě.cz →</a>
+      </div>
+    </div>
+
+    <!-- Case 3: Kreativní tech studio -->
+    <div class="case">
+      <div class="case-meta">
+        <span class="case-num">03</span>
+        <h2>Kreativní tech studio — Web od nuly</h2>
+        <div class="case-tags">
+          <span class="tag">UI Design</span>
+          <span class="tag">IT Step Academy</span>
+          <span class="tag">Kurz</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <strong>Výzva</strong>
+        <p>Navrhnout prezentační web pro fiktivní tech studio pro děti v rámci intenzivního UX/UI kurzu — od nuly, v Figmě.</p>
+        <strong>Řešení</strong>
+        <p>Tři propojené stránky (homepage, kroužky, školy) s konzistentním vizuálním systémem. Kartičky pro kroužky i lektory, živé barvy, jasná hierarchie pro rodiče i učitele jako primární uživatele.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="o-mne" style="background: white; max-width: 100%; padding: 6rem 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 4rem;">
+    <div class="section-label">O mně</div>
+    <div class="about-grid">
+      <div>
+        <h2>Průvodkyně<br><em>tvorbou.</em></h2>
+      </div>
+      <div class="about-text">
+        <p>Učím IT, robotiku a 3D tisk na ZŠ Vela v Praze. Matematiku ve 5. třídě učím Hejného metodou. Stavím vlastní vzdělávací hry na Zvídavě.cz — otevřenou knihovnu pro žáky ZŠ (CC BY 4.0).</p>
+        <p>UX pro mě není jen o rozhraní — je to o momentu, kdy člověk (žák, učitel, rodič) pochopí, co má dělat. A o tom, co se stane, když nepochopí.</p>
+        <p>Absolvovala jsem intenzivní UX/UI kurz v IT Step Academy a UX Summer Camp. Dokončuji Bc. na FF UK Praha.</p>
+        <div class="skills">
+          <span class="tag">Figma</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">User Research</span>
+          <span class="tag">Prototypování</span>
+          <span class="tag">Hejného metodika</span>
+          <span class="tag">Bubble.io</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontakt">
+  <div class="section-label">Kontakt</div>
+  <div class="contact-inner">
+    <h2>Pojďme si<br><em>popovídat.</em></h2>
+    <a href="mailto:katerina.cakin@aidetem.cz" class="btn">Napsat e-mail →</a>
+  </div>
+</section>
+
+<footer>
+  <p>Barbora Hlinková · 2026</p>
+  <p>Praha · <a href="https://zvidave.cz" style="color: var(--muted); text-decoration: none;">Zvídavě.cz</a></p>
+</footer>
+
+</body>
+</html>
