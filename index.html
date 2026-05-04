@@ -370,13 +370,18 @@
     overflow: hidden;
     background: var(--accent);
     padding: 0.7rem 0;
+    cursor: default;
+  }
+
+  .ticker-wrap:hover .ticker-track {
+    animation-play-state: paused;
   }
 
   .ticker-track {
     display: flex;
     gap: 0;
     width: max-content;
-    animation: ticker 18s linear infinite;
+    animation: ticker 50s linear infinite;
   }
 
   .ticker-track span {
