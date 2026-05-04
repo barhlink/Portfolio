@@ -271,12 +271,16 @@
 
   /* ABOUT */
   .about-photo {
-    width: 100%;
-    aspect-ratio: 4/5;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
     object-fit: cover;
     object-position: top center;
     display: block;
-    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    border: 3px solid var(--line);
+    outline: 4px solid var(--paper);
+    outline-offset: -6px;
   }
 
   .about-grid {
@@ -468,8 +472,8 @@
     <div class="section-label">O mně</div>
     <div class="about-grid">
       <div>
-        <img src="Barbora_Hlinkova.jpg" alt="Barbora Hlinková" class="about-photo">
         <h2>Průvodkyně<br><em>tvorbou.</em></h2>
+        <img src="Barbora_Hlinkova.jpg" alt="Barbora Hlinková" class="about-photo">
       </div>
       <div class="about-text">
         <p>Učím IT, robotiku a 3D tisk na ZŠ Vela v Praze. Matematiku ve 5. třídě učím Hejného metodou. Stavím vlastní vzdělávací hry na Zvídavě.cz — otevřenou knihovnu pro žáky ZŠ (CC BY 4.0).</p>
