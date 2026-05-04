@@ -335,6 +335,30 @@
     color: var(--muted);
   }
 
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -380,7 +404,29 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
-    .nav-links { gap: 1.5rem; }
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 61px;
+      left: 0; right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      width: 100%;
+      text-align: center;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 1rem;
+    }
+    .nav-links a:last-child { border-bottom: none; }
     .hero { padding: 7rem 1.5rem 2rem; }
     .hero-visual img { width: 280px; }
     .hero h1 { font-size: 2.6rem; }
@@ -396,11 +442,14 @@
 
 <nav>
   <div class="logo">Barbora <span>Hlinková</span></div>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#prace">Práce</a>
     <a href="#o-mne">O mně</a>
     <a href="#kontakt">Kontakt</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -505,5 +554,26 @@
   <p>Praha · <a href="https://zvidave.cz" style="color: var(--muted); text-decoration: none;">Zvídavě.cz</a></p>
 </footer>
 
+<script>
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('nav-links');
+  btn.addEventListener('click', () => {
+    const open = btn.classList.toggle('open');
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    btn.classList.remove('open');
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  }));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      btn.classList.remove('open');
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', false);
+    }
+  });
+</script>
 </body>
 </html>
