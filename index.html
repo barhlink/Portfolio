@@ -65,6 +65,7 @@
   }
 
   .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--accent); }
 
   /* HERO */
   .hero {
@@ -562,6 +563,21 @@
 </footer>
 
 <script>
+  // Active nav link via Intersection Observer
+  const sections = document.querySelectorAll('section[id], div.hero');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id || 'hero';
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + (entry.target.getAttribute('id') || ''));
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
   const btn = document.getElementById('hamburger');
   const nav = document.getElementById('nav-links');
   btn.addEventListener('click', () => {
