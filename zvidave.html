@@ -86,13 +86,18 @@
 
   .case-hero h1 em { font-style: italic; color: var(--accent); }
 
-  .case-hero-desc {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 540px;
+  .case-hook {
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 600px;
     margin: 0 auto 3rem;
-    line-height: 1.85;
+    line-height: 1.8;
     font-weight: 300;
+  }
+
+  .case-hook strong {
+    font-weight: 500;
+    color: var(--ink);
   }
 
   .case-meta {
@@ -138,6 +143,14 @@
     align-items: center;
     justify-content: center;
     font-size: 5rem;
+    overflow: hidden;
+  }
+
+  .case-cover-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* CONTENT */
@@ -152,7 +165,7 @@
     font-size: clamp(1.5rem, 2.5vw, 2rem);
     letter-spacing: -0.02em;
     margin-bottom: 1.25rem;
-    margin-top: 3.5rem;
+    margin-top: 4rem;
   }
 
   .case-content h2:first-child { margin-top: 0; }
@@ -169,7 +182,7 @@
 
   .case-content ul {
     list-style: none;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .case-content ul li {
@@ -177,9 +190,9 @@
     color: var(--muted);
     line-height: 1.85;
     font-weight: 300;
-    padding-left: 1.25rem;
+    padding-left: 1.5rem;
     position: relative;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
   }
 
   .case-content ul li::before {
@@ -193,15 +206,13 @@
   .case-img-block {
     width: 100%;
     background: #f5f5f3;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2.5rem 0;
-    font-size: 0.8rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
+    margin: 2.5rem 0 0.75rem;
+    overflow: hidden;
   }
+
+  .case-img-block.ratio-43 { aspect-ratio: 4/3; }
+  .case-img-block.ratio-169 { aspect-ratio: 16/9; }
+  .case-img-block.ratio-11 { aspect-ratio: 1/1; }
 
   .case-img-block img {
     width: 100%;
@@ -210,28 +221,122 @@
     display: block;
   }
 
-  /* CAPTION */
+  .case-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    min-height: 220px;
+  }
+
   .caption {
     font-size: 0.8rem;
     color: var(--muted);
     text-align: center;
-    margin-top: -1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-style: italic;
   }
+
+  /* TWO-UP IMAGE GRID */
+  .img-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .img-pair .case-img-block { margin: 0; }
 
   /* HIGHLIGHT BOX */
   .highlight {
     border-left: 3px solid var(--accent);
     padding: 1.25rem 1.5rem;
     background: #f0fafb;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
   }
 
   .highlight p {
     color: var(--ink);
     font-weight: 400;
     margin: 0;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+
+  /* DECISION CARDS */
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .decision-card {
+    border: 1px solid var(--line);
+    padding: 1.5rem;
+  }
+
+  .decision-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .decision-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .decision-card p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--line);
+    margin: 2rem 0;
+  }
+
+  .stat-item {
+    flex: 1;
+    padding: 1.5rem;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-number em { font-style: italic; color: var(--accent); }
+
+  .stat-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.4;
   }
 
   /* DIVIDER */
@@ -263,7 +368,6 @@
   }
 
   .case-nav a:hover { color: var(--ink); }
-
   .case-nav .next { text-align: right; }
 
   /* FOOTER */
@@ -311,25 +415,6 @@
     transform: translateY(-1px);
   }
 
-  /* HAMBURGER */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--ink);
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
@@ -337,6 +422,11 @@
     .case-cover { padding: 0 1.5rem; }
     .case-content { padding: 3rem 1.5rem; }
     .case-meta { gap: 1.5rem; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .img-pair { grid-template-columns: 1fr; }
+    .stat-row { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .stat-item:last-child { border-bottom: none; }
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
@@ -353,8 +443,12 @@
 <!-- HERO -->
 <div class="case-hero">
   <div class="case-category">UX research · EdTech · vlastní projekt</div>
-  <h1>Zvídavě.cz — <em>interaktivní</em><br>vzdělávací hry pro žáky ZŠ</h1>
-  <p class="case-hero-desc">Platforma pro výuku, kde hry nejsou odměna — jsou samotnou metodou.</p>
+  <h1>Zvídavě.cz —<br><em>interaktivní hry</em> pro žáky ZŠ</h1>
+  <p class="case-hook">
+    Vzdělávací aplikace pro děti jsou plné vnějších odměn, časového tlaku a gamification vzorů ze světa dospělých.
+    <strong>Navrhla jsem otevřenou knihovnu her, která funguje jinak</strong> —
+    a každý týden ji testuji se 60 žáky přímo ve třídě.
+  </p>
   <div class="case-meta">
     <div class="case-meta-item">
       <div class="case-meta-label">Role</div>
@@ -366,39 +460,169 @@
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Nástroje</div>
-      <div class="case-meta-value">Figma, HTML/CSS</div>
+      <div class="case-meta-value">Figma · HTML/CSS/JS</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Stav</div>
+      <div class="case-meta-value">Aktivně v provozu</div>
     </div>
   </div>
 </div>
 
 <!-- COVER -->
 <div class="case-cover">
-  <div class="case-cover-img">🧩</div>
+  <div class="case-cover-img">
+    <div class="case-img-placeholder">Screenshot hero vizuálu hry</div>
+  </div>
 </div>
 
 <!-- CONTENT -->
 <div class="case-content">
 
+  <!-- KONTEXT -->
   <h2>Kontext &amp; <em>problém</em></h2>
-  <p>Sem přijde popis kontextu a problému, který projekt řešil.</p>
+  <p>
+    Učím IT, robotiku a 3D tisk na základní škole. Každý den vidím, jak se děti setkávají se vzdělávacími aplikacemi — a jak rychle od nich odcházejí.
+    Ne proto, že by je matematika nebavila, ale proto, že aplikace jsou navržené tak, aby fungovaly na krátkodobou motivaci: odpočítávání, hvězdičky, penalizace za chybu.
+  </p>
+  <p>
+    Chtěla jsem zjistit, jestli jde udělat hru, která děti vtáhne bez vnějšího tlaku.
+    Kde chyba není selhání, ale součást procesu. Kde tempo určuje žák, ne aplikace.
+  </p>
+  <p><strong>Pro koho je Zvídavě.cz určeno:</strong></p>
+  <ul>
+    <li>Žáci ZŠ (primárně 2.–6. třída)</li>
+    <li>Učitelé hledající volně dostupné aktivity do výuky</li>
+    <li>Rodiče, kteří chtějí smysluplnou alternativu k zábavním hrám</li>
+  </ul>
 
-  <h2>Proces</h2>
-  <p>Sem přijde popis procesu — výzkum, návrh, testování.</p>
-
-  <div class="case-img-block">Obrázek / screenshot</div>
-
-  <h2>Řešení</h2>
-  <p>Sem přijde popis finálního řešení.</p>
+  <!-- RESEARCH -->
+  <h2>Research &amp; <em>insights</em></h2>
+  <p>
+    Moje výhoda je neobvyklá: jsem zároveň designérka i každodenní výzkumnice v terénu.
+    Každý týden sedím se 60 žáky a sleduji, jak s hrami pracují — kde se zaseknou, kde se smějí, kde tiše zavřou záložku.
+  </p>
 
   <div class="highlight">
-    <p>Klíčový poznatek nebo citát z projektu.</p>
+    <p>
+      „Největší designový insight nepřišel z analytiky — přišel ve chvíli, kdy jsem viděla žákyni, která hru dohrála, otočila se a řekla spolužákovi: <em>Zkus to, ale neprozrazuju ti jak.</em>"
+    </p>
   </div>
 
-  <h2>Výsledky</h2>
-  <p>Sem přijdou měřitelné výsledky nebo zpětná vazba.</p>
+  <p>Klíčové zdroje pro návrh:</p>
+  <ul>
+    <li><strong>Přímé pozorování</strong> — chování dětí při hraní, místa opuštění, reakce na chybová hlášení</li>
+    <li><strong>Hejného metodika jako UX principy</strong> — chyba jako přirozená součást učení, ne trest; práce vlastním tempem; prostředí, které vyzývá bez nápovědy</li>
+    <li><strong>Etický checklist (18 bodů)</strong> — co Zvídavě.cz záměrně nemá a proč</li>
+  </ul>
 
-  <div style="margin-top: 3rem;">
-    <a href="https://zvidave.cz" target="_blank" rel="noopener" class="btn">Navštívit Zvídavě.cz →</a>
+  <div class="case-img-block ratio-43">
+    <div class="case-img-placeholder">Screenshot nebo foto — děti při práci s hrou</div>
+  </div>
+  <p class="caption">Přímé pozorování ve třídě jako hlavní výzkumná metoda.</p>
+
+  <h2>Etický <em>checklist</em></h2>
+  <p>
+    Před zahájením návrhu jsem si definovala 18 principů, které určují, co Zvídavě.cz nikdy nebude obsahovat.
+    Každý bod vznikl jako reakce na konkrétní vzorec, který jsem viděla v existujících aplikacích a který jsem odmítla opakovat.
+  </p>
+  <ul>
+    <li>Žádný časový limit na odpověď</li>
+    <li>Žádná penalizace za chybný pokus</li>
+    <li>Žádné pop-up odměny přerušující soustředění</li>
+    <li>Žádné pořadí hráčů ani srovnávání s ostatními</li>
+    <li>Žádné uzamčené úrovně — vše dostupné od začátku</li>
+    <li>Žádná registrace ani sběr dat o dětech</li>
+  </ul>
+
+  <!-- DESIGN ROZHODNUTÍ -->
+  <h2>Klíčová design <em>rozhodnutí</em></h2>
+  <p>Ne každé rozhodnutí bylo samozřejmé. Tady jsou čtyři, která měla největší napětí.</p>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="decision-label">Rozhodnutí 01</div>
+      <h3>Žádný časový limit</h3>
+      <p>Ztratíš prvek napětí. Získáš prostor pro přemýšlení — a děti, které se jinak vzdají po 10 sekundách, zůstávají a zkouší dál.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Rozhodnutí 02</div>
+      <h3>Zvířata jako průvodci, ne autority</h3>
+      <p>Zvíře neopravuje, neznamkuje, nesrovnává. Reaguje — a nechá žáka, aby si sám ověřil, jestli má pravdu.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Rozhodnutí 03</div>
+      <h3>Single-file HTML, offline-first</h3>
+      <p>Žádná závislost na serverech, přihlašování ani aktualizacích. Učitel stáhne soubor, otevře v prohlížeči. Funguje i bez internetu ve třídě.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Rozhodnutí 04</div>
+      <h3>NVC jazyk v chybových hlášeních</h3>
+      <p>Místo „Špatně!" píše hra „Zkus to ještě jednou." Jazyk bez hodnocení snižuje stres a děti se nebojí zkoušet znovu.</p>
+    </div>
+  </div>
+
+  <!-- ITERACE -->
+  <h2><em>Iterace</em> — Zlomková zoo</h2>
+  <p>
+    Hra o zlomcích je jedním z nejdéle vyvíjených titulů na platformě. Prošla třemi výraznými verzemi — každá na základě pozorování ze třídy.
+  </p>
+
+  <div class="img-pair">
+    <div class="case-img-block ratio-43">
+      <div class="case-img-placeholder">Verze 1 — první prototyp</div>
+    </div>
+    <div class="case-img-block ratio-43">
+      <div class="case-img-placeholder">Verze 2 — po první iteraci</div>
+    </div>
+  </div>
+  <p class="caption">Zlomková zoo v1 → v2: změna vizuální reprezentace po zjištění, že děti nechápou abstraktní dělení bez kontextu.</p>
+
+  <div class="case-img-block ratio-169">
+    <div class="case-img-placeholder">Verze 3 — finální podoba</div>
+  </div>
+  <p class="caption">v3: přidání průvodce a přepracování feedbacku po chybě.</p>
+
+  <div class="highlight">
+    <p>
+      Největší změna mezi verzemi nebyla vizuální — bylo to načasování zpětné vazby.
+      V první verzi hra okamžitě opravovala. Ve třetí verzi čeká, až žák sám řekne, že skončil.
+      Rozdíl v soustředění byl okamžitě viditelný.
+    </p>
+  </div>
+
+  <!-- VÝSLEDKY -->
+  <h2><em>Výsledky</em></h2>
+
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-number"><em>15+</em></div>
+      <div class="stat-desc">interaktivních her<br>volně dostupných</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><em>60</em></div>
+      <div class="stat-desc">žáků testuje hry<br>každý týden živě</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><em>EduForum</em></div>
+      <div class="stat-desc">projekt představen<br>na vzdělávací konferenci</div>
+    </div>
+  </div>
+
+  <p>
+    Zvídavě.cz používají učitelé i mimo mou školu — šíří se přes učitelské skupiny bez jakékoli placené propagace.
+    Zpětná vazba od kolegů potvrzuje to, co vidím ve třídě: děti se k hrám vrací dobrovolně.
+  </p>
+
+  <h2>Co bych <em>příště</em> udělala jinak</h2>
+  <ul>
+    <li>Dříve bych zapojila více učitelů do testování — pohled zvenčí třídy odhalil věci, které jsem přestala vidět</li>
+    <li>Strukturovanější dokumentace iterací od začátku — první verze her jsou dobře popsané jen v hlavě</li>
+    <li>Dříve bych řešila přístupnost (kontrast, velikost klikatelných ploch pro žáky s jemnou motorikou)</li>
+  </ul>
+
+  <div style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+    <a href="https://zvidave.cz" target="_blank" rel="noopener" class="btn">Otevřít Zvídavě.cz →</a>
   </div>
 
 </div>
