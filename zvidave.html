@@ -104,17 +104,21 @@
   }
 
   .case-meta {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     padding: 1.5rem 0;
     margin-top: 3rem;
   }
 
-  .case-meta-item { text-align: center; }
+  .case-meta-item {
+    text-align: center;
+    padding: 0 1rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .case-meta-item:last-child { border-right: none; }
 
   .case-meta-label {
     font-size: 0.7rem;
@@ -433,7 +437,11 @@
     .case-hero { padding: 8rem 1.5rem 3rem; }
     .case-cover { padding: 0 1.5rem; }
     .case-content { padding: 3rem 1.5rem; }
-    .case-meta { gap: 1.5rem; }
+    .case-meta { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0; }
+    .case-meta-item:nth-child(2) { border-right: none; }
+    .case-meta-item:nth-child(3) { border-right: 1px solid var(--line); }
+    .case-meta-item:nth-child(3),
+    .case-meta-item:nth-child(4) { border-top: 1px solid var(--line); padding-top: 1.25rem; }
     .decision-grid { grid-template-columns: 1fr; }
     .img-pair { grid-template-columns: 1fr; }
     .stat-row { flex-direction: column; }
