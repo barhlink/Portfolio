@@ -224,6 +224,7 @@
     background: #f5f5f3;
     margin: 2.5rem 0 0.75rem;
     overflow: hidden;
+    cursor: zoom-in;
   }
 
   .case-img-block.ratio-43 { aspect-ratio: 4/3; }
@@ -235,7 +236,10 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
   }
+
+  .case-img-block:hover img { transform: scale(1.02); }
 
   .case-img-placeholder {
     width: 100%;
@@ -431,6 +435,50 @@
     transform: translateY(-1px);
   }
 
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.75rem;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  /* COVER clickable */
+  .case-cover-img {
+    cursor: zoom-in;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
@@ -454,6 +502,12 @@
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zav&#345;&#237;t">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <nav>
   <a href="index.html" class="logo">Barbora <span>Hlinkov&#225;</span></a>
@@ -492,7 +546,7 @@
 
 <!-- COVER -->
 <div class="case-cover">
-  <div class="case-cover-img">
+  <div class="case-cover-img" data-zoomable>
     <img src="casestudy_zvidave_hp.png" alt="Zv&#237;dav&#283;.cz &#8211; &#250;vodn&#237; str&#225;nka">
   </div>
 </div>
@@ -722,6 +776,52 @@
   <p>Barbora Hlinkov&#225; &#183; 2026</p>
   <p>Praha</p>
 </footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  // Click on any .case-img-block img
+  document.querySelectorAll('.case-img-block img').forEach(function(img) {
+    img.parentElement.addEventListener('click', function() {
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  // Click on cover image
+  var coverBlock = document.querySelector('.case-cover-img[data-zoomable]');
+  if (coverBlock) {
+    coverBlock.addEventListener('click', function() {
+      var img = coverBlock.querySelector('img');
+      if (img) openLightbox(img.src, img.alt);
+    });
+  }
+
+  // Close on backdrop click or close button
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
