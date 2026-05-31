@@ -3,59 +3,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redesign formuláře — Portfolio | B.H.</title>
+<title>Atmoskop – redesign formuláře · Portfolio | B.H.</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --ink: #1a1a18; --paper: #ffffff; --accent: #1298a8; --muted: #888880; --line: #e8e6e1; }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #ffffff;
+    --accent: #1298a8;
+    --muted: #888880;
+    --line: #e8e6e1;
+  }
+
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: var(--paper); border-bottom: 1px solid var(--line); }
-  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+    display: inline-block;
+    cursor: pointer;
+  }
+
   .logo span { color: var(--accent); font-style: italic; }
-  .nav-back { font-size: 0.9rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .logo:hover { opacity: 0.75; }
+
+  .nav-back {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
   .nav-back:hover { color: var(--ink); }
-  .case-hero { max-width: 860px; margin: 0 auto; padding: 10rem 2rem 5rem; text-align: center; }
-  .case-category { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
-  .case-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+
+  .case-hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 10rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .case-category {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
   .case-hero h1 em { font-style: italic; color: var(--accent); }
-  .case-hero-desc { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto 3rem; line-height: 1.85; font-weight: 300; }
-  .case-meta { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1.5rem 0; margin-top: 3rem; }
-  .case-meta-item { text-align: center; }
-  .case-meta-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+
+  .case-hook {
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .case-hook strong { font-weight: 500; color: var(--ink); }
+
+  .case-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+  }
+
+  .case-meta-item {
+    text-align: center;
+    padding: 0 1rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .case-meta-item:last-child { border-right: none; }
+
+  .case-meta-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
   .case-meta-value { font-size: 0.9rem; font-weight: 500; }
-  .case-cover { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
-  .case-cover-img { width: 100%; aspect-ratio: 16/9; background: #f0f6fa; display: flex; align-items: center; justify-content: center; padding: 3rem; }
-  .case-content { max-width: 740px; margin: 0 auto; padding: 5rem 2rem; }
-  .case-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.02em; margin-bottom: 1.25rem; margin-top: 3.5rem; }
+
+  .case-cover {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .case-cover-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #f0f6fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .case-cover-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .case-content {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .case-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    margin-top: 4rem;
+  }
+
   .case-content h2:first-child { margin-top: 0; }
   .case-content h2 em { font-style: italic; color: var(--accent); }
-  .case-content p { font-size: 1rem; color: var(--muted); line-height: 1.85; font-weight: 300; margin-bottom: 1.25rem; }
-  .case-content ul { list-style: none; margin-bottom: 1.25rem; }
-  .case-content ul li { font-size: 1rem; color: var(--muted); line-height: 1.85; font-weight: 300; padding-left: 1.25rem; position: relative; margin-bottom: 0.4rem; }
-  .case-content ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
-  .case-img-block { width: 100%; background: #f5f5f3; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; margin: 2.5rem 0; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
-  .case-img-block img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .caption { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: -1.5rem; margin-bottom: 2rem; font-style: italic; }
-  .highlight { border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; background: #f0fafb; margin: 2rem 0; }
-  .highlight p { color: var(--ink); font-weight: 400; margin: 0; }
-  .divider { max-width: 1100px; margin: 0 auto; padding: 0 4rem; border-top: 1px solid var(--line); }
-  .case-nav { max-width: 1100px; margin: 0 auto; padding: 4rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
-  .case-nav a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+
+  .case-content > h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .case-content p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .case-content ul { list-style: none; margin-bottom: 1.5rem; }
+
+  .case-content ul li {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-content ul li::before {
+    content: '\2013';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .case-img-block {
+    width: 100%;
+    background: #f5f5f3;
+    margin: 2.5rem 0 0.75rem;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  .case-img-block.ratio-43 { aspect-ratio: 4/3; }
+  .case-img-block.ratio-169 { aspect-ratio: 16/9; }
+
+  .case-img-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .case-img-block:hover img { transform: scale(1.02); }
+
+  .case-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    min-height: 220px;
+  }
+
+  .caption {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .highlight {
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    background: #f0fafb;
+    margin: 2.5rem 0;
+  }
+
+  .highlight p {
+    color: var(--ink);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .decision-card { border: 1px solid var(--line); padding: 1.5rem; }
+
+  .decision-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .decision-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .decision-card p { font-size: 0.9rem; margin: 0; line-height: 1.7; }
+
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .case-nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .case-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
   .case-nav a:hover { color: var(--ink); }
   .case-nav .next { text-align: right; }
-  footer { border-top: 1px solid var(--line); padding: 2rem 4rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   footer p { font-size: 0.8rem; color: var(--muted); }
-  .btn { display: inline-block; padding: 0.75rem 1.75rem; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em; border: 1px solid var(--ink); transition: background 0.2s, border-color 0.2s, transform 0.15s; }
-  .btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  .btn-outline:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.75rem;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
     .case-hero { padding: 8rem 1.5rem 3rem; }
     .case-cover { padding: 0 1.5rem; }
     .case-content { padding: 3rem 1.5rem; }
-    .case-meta { gap: 1.5rem; }
+    .case-meta { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0; }
+    .case-meta-item:nth-child(2) { border-right: none; }
+    .case-meta-item:nth-child(3) { border-right: 1px solid var(--line); }
+    .case-meta-item:nth-child(3),
+    .case-meta-item:nth-child(4) { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+    .decision-grid { grid-template-columns: 1fr; }
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
@@ -64,56 +386,211 @@
 </head>
 <body>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <nav>
   <a href="index.html" class="logo">Barbora <span>Hlinková</span></a>
   <a href="index.html#prace" class="nav-back">← Zpět na portfolio</a>
 </nav>
 
 <div class="case-hero">
-  <div class="case-category">UX design · usability · UX Summer Camp</div>
-  <h1>Zjednodušení formuláře —<br>redesign pro vyšší <em>srozumitelnost</em></h1>
-  <p class="case-hero-desc">Jak malé úpravy ve formuláři mohou zásadně snížit kognitivní zátěž uživatele.</p>
+  <div class="case-category">UX design · výzkum · UX Summer Camp 2024</div>
+  <h1>Redesign přihlášky –<br><em>Atmoskop</em></h1>
+  <p class="case-hook">
+    Na UX Summer Campu 2024 jsme dostali brief od Atmoskopu: redesignovat odpověrní
+    formulář pro pracovní inzeráty. Výzkum, workshopy, prototypy, testování – vše
+    za pár dní. <strong>A zjistili jsme, co se pochopí opravdu až v praxi – správná
+    struktura nestačí, když máš špatně zvolená slova.</strong>
+  </p>
   <div class="case-meta">
     <div class="case-meta-item">
       <div class="case-meta-label">Role</div>
-      <div class="case-meta-value">UX designérka</div>
+      <div class="case-meta-value">UX designérka (v týmu)</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Typ</div>
-      <div class="case-meta-value">UX Summer Camp</div>
+      <div class="case-meta-value">UX Summer Camp 2024</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Nástroje</div>
       <div class="case-meta-value">Figma</div>
     </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Klient</div>
+      <div class="case-meta-value">Atmoskop / Alma</div>
+    </div>
   </div>
 </div>
 
 <div class="case-cover">
-  <div class="case-cover-img">
+  <div class="case-cover-img" style="padding: 3rem;">
     <img src="atmoskop.svg" alt="Atmoskop logo" style="max-width: 35%; max-height: 100%; object-fit: contain;">
   </div>
 </div>
 
 <div class="case-content">
 
-  <h2>Kontext &amp; <em>problém</em></h2>
-  <p>Sem přijde popis kontextu a problému, který projekt řešil.</p>
+  <h2>O projektu &amp; <em>moje role</em></h2>
+  <p>
+    Atmoskop je platforma, kde lidé hodnotí zaměstnavatele. Klíčový moment
+    na webu nastává, když se uživatel rozhodne firmě napsat a reagovat na
+    pracovní pozici. Cílem projektu bylo celý odpověrní formulář redesignovat
+    – tak, aby odpovídal potřebám cílové skupiny a design systému Alma.
+  </p>
+  <p>
+    Na projektu jsem pracovala v designovém týmu. Zodpovídala jsem za analýzu
+    uživatelských rozhovorů, facilitaci ideation workshopů a testování prototypů.
+    Výsledný koncept jsme s kolegou prezentovali stakeholderům.
+  </p>
+  <p>
+    Cílová skupina nebyli genérictí uživatelé internetu, ale konkrétně IT
+    specialisté, designéři a produktoví manažeři. Lidé, kteří ví, jak má vypadat
+    dobré UX – a kteří si dobře pamatují frustraci z toho špatného.
+  </p>
 
-  <h2>Proces</h2>
-  <p>Sem přijde popis procesu — výzkum, návrh, testování.</p>
+  <h2>Výzkum: affinity mapping<br>&amp; <em>tři insighty</em></h2>
+  <p>
+    Nezačínali jsme návrhem. Začínali jsme poslechem.
+  </p>
+  <p>
+    Nahrávky z uživatelských rozhovorů jsme rozebrali pomocí Affinity Mappingu
+    – klíčové myšlenky na lístečky, lístečky do shluků, shluky do insightů.
+    Tři věci se opakovaly napříč rozhovory:
+  </p>
+  <ul>
+    <li><strong>Variabilita příloh</strong> – ne jen PDF s životopisem, ale odkaz na portfolio, GitHub nebo LinkedIn.</li>
+    <li><strong>Volnost ve formě</strong> – někdo preferuje strukturované CV, jiný průvodní dopis nebo video.</li>
+    <li><strong>Čistý formulář</strong> – bez zbytečného textu, který odvádí pozornost od vyplňování.</li>
+  </ul>
 
-  <div class="case-img-block">Obrázek / screenshot</div>
+  <div class="case-img-block ratio-43">
+    <div class="case-img-placeholder">Foto: Affinity Mapping</div>
+  </div>
+  <p class="caption">Nahrávky → lístečky → insighty &ndash; výstup z Affinity Mappingu</p>
 
-  <h2>Řešení</h2>
-  <p>Sem přijde popis finálního řešení.</p>
+  <h2>Ideation: Crazy 8’s,<br><em>De Bono</em> a dot voting</h2>
+  <p>
+    Na základě insightů jsme si definovali designovou výzvu a spustili dvě metody.
+  </p>
 
-  <div class="highlight">
-    <p>Klíčový poznatek nebo citát z projektu.</p>
+  <h3>Crazy 8’s</h3>
+  <p>
+    Osm minut, osm nápadů. Rychlé tempo záměrně nedovolí strávit příliš dlouho
+    u prvního návrhu – donutí vás se od klišé dostat.
+  </p>
+
+  <h3>De Bono Šest klobouků</h3>
+  <p>
+    Metoda, která pomáhá hodnotit nápady z různých úhlů a vyhnout se skupinovému
+    myšlení. Střídali jsme kritický pohled (černý klobouk), emoce (červený)
+    a kreativitu (zelený).
+  </p>
+
+  <p>
+    Na závěr dot voting: každý přidělil hlasy nejsilnějším prvkům.
+    Z výsledků vznikla společná skica, ze které si každý člen týmu odnesl
+    základ pro vlastní prototyp.
+  </p>
+
+  <div class="case-img-block ratio-43">
+    <div class="case-img-placeholder">Foto: Crazy 8’s / skicování</div>
+  </div>
+  <p class="caption">Osm návrhů za osm minut &ndash; výstup z Crazy 8’s</p>
+
+  <h2>Prototyp: AI asistent<br>&amp; <em>dvoustupňový formulář</em></h2>
+  <p>
+    Každý člen týmu si ze společné skici udělal vlastní prototyp – paralélně,
+    aby bylo co testovat. Moje dvě hlavní rozhodnutí:
+  </p>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="decision-label">Nápad 01</div>
+      <h3>AI textový asistent</h3>
+      <p>
+        Přímá nápověda v místě, kde uchazeči nejvíc tápou – u otázky
+        „Jakou hodnotu nám přinesete?“. AI asistent pomáhal formulovat nebo
+        stylisticky upravit odpověď přímo ve formuláři.
+        V roce 2024 šlo o prvek, který na pracovních portálech jednoduše neexistoval.
+      </p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Nápad 02</div>
+      <h3>Accordion pro nepovinné otázky</h3>
+      <p>
+        Rozšiřující sekci jsem schovala do rozbalovacího prvku. Kdo spěchá,
+        odešle přihlášku za pár vteřin (jméno, e-mail, CV). Kdo chce dodat víc,
+        sekci rozbalí. Bez přetěžování, bez povinnosti.
+      </p>
+    </div>
   </div>
 
-  <h2>Výsledky</h2>
-  <p>Sem přijdou měřitelné výsledky nebo zpětná vazba.</p>
+  <p>
+    Vedle mých řešení přišel kolega se skvělým nápadem: přidat do formuláře
+    fotku a jméno konkrétní personalistky. Malý prvek, který formuláři dodá
+    lidský rozměr.
+  </p>
+
+  <div class="case-img-block ratio-169">
+    <img src="Screenshot 2026-05-30 19.24.16.png" alt="Prototyp formuláře – accordion a AI asistent" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="case-img-placeholder" style="display: none;">Screenshot: Prototyp formuláře</div>
+  </div>
+  <p class="caption">Accordion pro nepovinné otázky a AI asistent pro průvodní text</p>
+
+  <h2>Testování a <em>selhání hypotéz</em></h2>
+  <p>
+    Nejlepší prototyp prošel křížovým testováním – týmy testovaly navzájem
+    na reálných scénářích. Výsledky byly nepohodlné a velmi užitečné.
+  </p>
+
+  <div class="highlight">
+    <p>
+      Formulář měl správnou strukturu i logiku. Přesto jsme dvěma špatnými
+      frázemi rozhodili celý zážitek.
+    </p>
+  </div>
+
+  <h3>Nejasné copy</h3>
+  <p>
+    Texty, které jsme zvolili, nebyly pro uživatele jednoznačné.
+    Pochopení vyžadovalo zbytečnou kognitivní práci.
+  </p>
+
+  <h3>&bdquo;Zvyš svou šanci&ldquo; místo motivace vyvolala úzkost</h3>
+  <p>
+    Název rozbalovací sekce zněl v našich hlavách motivacně.
+    Pro testované vyvolal opak: nevěděli, co přesně personalistka považuje
+    za důležité, a báli se, že když sekci nevyplní, budou automaticky
+    vyřazeni z výběrového řízení.
+  </p>
+
+  <h2>Co jsem si odnesla<br>&amp; <em>co by přišlo dál</em></h2>
+  <p>
+    Projekt skončil prezentací výsledného konceptu před stakeholdery,
+    kterou jsem vedla s kolegou.
+  </p>
+  <p>
+    Co jsem si odnesla: formulář může mít správnou logiku i strukturu – a přesto
+    kazit user experience. Stačí špatně zvolená slova. UX writing není kosmetika
+    přiložená k hotovému designu.
+  </p>
+
+  <div class="highlight">
+    <p>
+      Testování ukázalo, kde je problém. Čas na další kolo ale už nebyl
+      – projekt skončil fází prezentace.
+    </p>
+  </div>
+
+  <p>Co by přišlo dál:</p>
+  <ul>
+    <li>Přepsat microcopy celého formuláře a odbourat nátlakové formulace.</li>
+    <li>Znovu otestovat accordion – ověřit, jestli nevytváří dojem, že bez jeho vyplnění se přihláška nevyplačí odeslat.</li>
+    <li>A pak otestovat znovu.</li>
+  </ul>
 
 </div>
 
@@ -121,15 +598,49 @@
 
 <div class="case-nav">
   <a href="h2gp.html">← H2 Grand Prix</a>
-  <a href="zvidave.html" class="next">Zpět na začátek →</a>
+  <a href="index.html#prace" class="next">Všechny projekty →</a>
 </div>
 
 <div class="divider"></div>
 
 <footer>
   <p>Barbora Hlinková · 2026</p>
-  <p>Praha · <a href="https://zvidave.cz" style="color: var(--muted); text-decoration: none;">Zvídavě.cz</a></p>
+  <p>Praha</p>
 </footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.case-img-block img').forEach(function(img) {
+    img.parentElement.addEventListener('click', function() {
+      if (img.complete && img.naturalWidth > 0) openLightbox(img.src, img.alt);
+    });
+  });
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
