@@ -26,7 +26,6 @@
     line-height: 1.6;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -62,7 +61,6 @@
 
   .nav-back:hover { color: var(--ink); }
 
-  /* CASE HERO */
   .case-hero {
     max-width: 860px;
     margin: 0 auto;
@@ -98,10 +96,7 @@
     font-weight: 300;
   }
 
-  .case-hook strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
+  .case-hook strong { font-weight: 500; color: var(--ink); }
 
   .case-meta {
     display: grid;
@@ -129,12 +124,8 @@
     margin-bottom: 0.3rem;
   }
 
-  .case-meta-value {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
+  .case-meta-value { font-size: 0.9rem; font-weight: 500; }
 
-  /* COVER IMAGE */
   .case-cover {
     width: 100%;
     max-width: 1100px;
@@ -149,7 +140,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 5rem;
     overflow: hidden;
   }
 
@@ -160,7 +150,6 @@
     display: block;
   }
 
-  /* CONTENT */
   .case-content {
     max-width: 740px;
     margin: 0 auto;
@@ -176,7 +165,6 @@
   }
 
   .case-content h2:first-child { margin-top: 0; }
-
   .case-content h2 em { font-style: italic; color: var(--accent); }
 
   .case-content > h3 {
@@ -196,10 +184,7 @@
     margin-bottom: 1.25rem;
   }
 
-  .case-content ul {
-    list-style: none;
-    margin-bottom: 1.5rem;
-  }
+  .case-content ul { list-style: none; margin-bottom: 1.5rem; }
 
   .case-content ul li {
     font-size: 1rem;
@@ -218,7 +203,6 @@
     color: var(--accent);
   }
 
-  /* IMAGE BLOCK */
   .case-img-block {
     width: 100%;
     background: #f5f5f3;
@@ -229,7 +213,6 @@
 
   .case-img-block.ratio-43 { aspect-ratio: 4/3; }
   .case-img-block.ratio-169 { aspect-ratio: 16/9; }
-  .case-img-block.ratio-11 { aspect-ratio: 1/1; }
 
   .case-img-block img {
     width: 100%;
@@ -262,7 +245,6 @@
     font-style: italic;
   }
 
-  /* TWO-UP IMAGE GRID */
   .img-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -272,7 +254,6 @@
 
   .img-pair .case-img-block { margin: 0; }
 
-  /* HIGHLIGHT BOX */
   .highlight {
     border-left: 3px solid var(--accent);
     padding: 1.25rem 1.5rem;
@@ -288,7 +269,6 @@
     font-size: 1.05rem;
   }
 
-  /* DECISION CARDS */
   .decision-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -296,10 +276,7 @@
     margin: 2rem 0;
   }
 
-  .decision-card {
-    border: 1px solid var(--line);
-    padding: 1.5rem;
-  }
+  .decision-card { border: 1px solid var(--line); padding: 1.5rem; }
 
   .decision-label {
     font-size: 0.7rem;
@@ -318,13 +295,8 @@
     line-height: 1.3;
   }
 
-  .decision-card p {
-    font-size: 0.9rem;
-    margin: 0;
-    line-height: 1.7;
-  }
+  .decision-card p { font-size: 0.9rem; margin: 0; line-height: 1.7; }
 
-  /* DIVIDER */
   .divider {
     max-width: 1100px;
     margin: 0 auto;
@@ -332,7 +304,6 @@
     border-top: 1px solid var(--line);
   }
 
-  /* NAV NEXT/PREV */
   .case-nav {
     max-width: 1100px;
     margin: 0 auto;
@@ -355,7 +326,6 @@
   .case-nav a:hover { color: var(--ink); }
   .case-nav .next { text-align: right; }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--line);
     padding: 2rem 4rem;
@@ -368,7 +338,6 @@
 
   footer p { font-size: 0.8rem; color: var(--muted); }
 
-  /* LIGHTBOX */
   .lightbox {
     display: none;
     position: fixed;
@@ -407,7 +376,6 @@
 
   .lightbox-close:hover { opacity: 1; }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
     .case-hero { padding: 8rem 1.5rem 3rem; }
@@ -428,7 +396,6 @@
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&times;</button>
   <img id="lightbox-img" src="" alt="">
@@ -439,15 +406,14 @@
   <a href="index.html#prace" class="nav-back">← Zpět na portfolio</a>
 </nav>
 
-<!-- HERO -->
 <div class="case-hero">
   <div class="case-category">UX design · výzkum · UX Summer Camp 2024</div>
   <h1>Redesign přihlášky –<br><em>Atmoskop</em></h1>
   <p class="case-hook">
-    Na UX Summer Campu 2024 jsme dostali brief od Atmoskopu: redesignovat odpověrní formulář
-    pro pracovní inzeráty. Výzkum, workshopy, prototypy, testování – vše za pár dní.
-    <strong>A zjistili jsme, co se pochopí opravdu až v praxi – správná struktura nestačí,
-    když máš špatně zvolená slova.</strong>
+    Na UX Summer Campu 2024 jsme dostali brief od Atmoskopu: redesignovat odpověrní
+    formulář pro pracovní inzeráty. Výzkum, workshopy, prototypy, testování – vše
+    za pár dní. <strong>A zjistili jsme, co se pochopí opravdu až v praxi – správná
+    struktura nestačí, když máš špatně zvolená slova.</strong>
   </p>
   <div class="case-meta">
     <div class="case-meta-item">
@@ -469,36 +435,32 @@
   </div>
 </div>
 
-<!-- COVER -->
 <div class="case-cover">
-  <div class="case-cover-img" style="background: #f0f6fa; padding: 3rem;">
+  <div class="case-cover-img" style="padding: 3rem;">
     <img src="atmoskop.svg" alt="Atmoskop logo" style="max-width: 35%; max-height: 100%; object-fit: contain;">
   </div>
 </div>
 
-<!-- CONTENT -->
 <div class="case-content">
 
-  <!-- 1. O PROJEKTU -->
   <h2>O projektu &amp; <em>moje role</em></h2>
   <p>
-    Atmoskop je platforma, kde lidé hodnotit zaměstnavatele. Klíčový moment na webu nastává,
-    když se uživatel rozhodne firmě napsat a reagovat na pracovní pozici.
-    Cílem projektu bylo celý odpověrní formulář redesignovat – tak, aby odpovídal potřebám
-    cílové skupiny a design systému Alma.
+    Atmoskop je platforma, kde lidé hodnotití zaměstnavatele. Klíčový moment na webu
+    nastává, když se uživatel rozhodne firmě napsat a reagovat na pracovní pozici.
+    Cílem projektu bylo celý odpověrní formulář redesignovat – tak, aby odpovídal
+    potřebám cílové skupiny a design systému Alma.
   </p>
   <p>
-    Na projektu jsem pracovala v designovém týmu. Zodpovídala jsem za analýzu uživatelských
-    rozhovorů, facilitaci ideation workshopů a testování prototypů. Výsledný koncept jsme
-    s kolegou prezentovali stakeholderům.
+    Na projektu jsem pracovala v designovém týmu. Zodpovídala jsem za analýzu
+    uživatelských rozhovorů, facilitaci ideation workshopů a testování prototypů.
+    Výsledný koncept jsme s kolegou prezentovali stakeholderům.
   </p>
   <p>
-    Cílová skupina nebyli genérictí uživatelé internetu, ale konkrétně IT specialisté,
-    designéři a produktoví manažeři. Lidé, kteří védí, jak má vypadat dobré UX –
-    a kteří si dobře pamatují frustraci z toho špatného.
+    Cílová skupina nebyli genérictí uživatelé internetu, ale konkrétně IT
+    specialisté, designéři a produktoví manažeři. Lidé, kteří védí, jak má
+    vypadat dobré UX – a kteří si dobře pamatují frustraci z toho špatného.
   </p>
 
-  <!-- 2. VÝZKUM -->
   <h2>Výzkum: affinity mapping<br>&amp; <em>tři insighty</em></h2>
   <p>
     Nezačínali jsme návrhem. Začínali jsme poslechem.
@@ -514,13 +476,11 @@
     <li><strong>Čistý formulář</strong> – bez zbytečného textu, který odvádí pozornost od vyplňování.</li>
   </ul>
 
-  <!-- Placeholder: sem nahraj foto z Affinity Mappingu -->
   <div class="case-img-block ratio-43">
     <div class="case-img-placeholder">Foto: Affinity Mapping</div>
   </div>
   <p class="caption">Nahrávky → lístečky → insighty &ndash; výstup z Affinity Mappingu</p>
 
-  <!-- 3. IDEATION -->
   <h2>Ideation: Crazy 8’s,<br><em>De Bono</em> a dot voting</h2>
   <p>
     Na základě insightů jsme si definovali designovou výzvu a spustili dvě metody.
@@ -545,13 +505,11 @@
     základ pro vlastní prototyp.
   </p>
 
-  <!-- Placeholder: sem nahraj foto z Crazy 8's / skicování -->
   <div class="case-img-block ratio-43">
     <div class="case-img-placeholder">Foto: Crazy 8’s / skicování</div>
   </div>
   <p class="caption">Osm návrhů za osm minut &ndash; výstup z Crazy 8’s</p>
 
-  <!-- 4. PROTOTYP -->
   <h2>Prototyp: AI asistent<br>&amp; <em>dvoustupňový formulář</em></h2>
   <p>
     Každý člen týmu si ze společné skici udělal vlastní prototyp – paralélně,
@@ -574,35 +532,34 @@
       <h3>Accordion pro nepovinné otázky</h3>
       <p>
         Rozšiřující sekci jsem schovala do rozbalovacího prvku. Kdo spěchá,
-        odešle přihlášku za pár vteřin (jméno, e-mail, CV).
-        Kdo chce dodat víc, sekci rozbalí. Bez přetěžování, bez povinnosti.
+        odešle přihlášku za pár vteřin (jméno, e-mail, CV). Kdo chce dodat víc,
+        sekci rozbalí. Bez přetěžování, bez povinnosti.
       </p>
     </div>
   </div>
 
   <p>
-    Vedle mých řešení přišel kolega se skvělým nápadem: přidat do formuláře fotku
-    a jméno konkrétní personalistky. Malý prvek, který formuláři dodá lidský rozměr.
+    Vedle mých řešení přišel kolega se skvělým nápadem: přidat do formuláře
+    fotku a jméno konkrétní personalistky. Malý prvek, který formuláři
+    dodá lidský rozměr.
   </p>
 
-  <!-- Nahraj screenshot: Screenshot 2026-05-30 19.24.16.png -->
   <div class="case-img-block ratio-169">
     <img src="Screenshot 2026-05-30 19.24.16.png" alt="Prototyp formuláře – accordion a AI asistent" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
     <div class="case-img-placeholder" style="display: none;">Screenshot: Prototyp formuláře</div>
   </div>
   <p class="caption">Accordion pro nepovinné otázky a AI asistent pro průvodní text</p>
 
-  <!-- 5. TESTOVÁNÍ -->
   <h2>Testování a <em>selhání hypotéz</em></h2>
   <p>
-    Nejlepší prototyp prošel křížovým testováním – týmy testovaly navízám
+    Nejlepší prototyp prošel křížovým testováním – týmy testovaly navzájem
     na reálných scénářích. Výsledky byly nepohodlné a velmi užitečné.
   </p>
 
   <div class="highlight">
     <p>
-      Formulář měl správnou strukturu i logiku. Přesto jsme dvěma
-      špatnými frázemi rozhodili celý zážitek.
+      Formulář měl správnou strukturu i logiku. Přesto jsme dvěma špatnými
+      frázemi rozhodili celý zážitek.
     </p>
   </div>
 
@@ -615,26 +572,25 @@
   <h3>&bdquo;Zvyš svou šanci&ldquo; místo motivace vyvolala úzkost</h3>
   <p>
     Název rozbalovací sekce zněl v našich hlavách motivacně.
-    Pro testované vyvolal opak: nevěděli, co přesně personalistka
-    považuje za důležité, a báli se, že když sekci nevyplní,
-    budou automaticky vyřazeni z výběrového řízení.
+    Pro testované vyvolal opak: nevěděli, co přesně personalistka považuje
+    za důležité, a báli se, že když sekci nevyplní, budou automaticky
+    vyřazeni z výběrového řízení.
   </p>
 
-  <!-- 6. CO JSEM SI ODNESLA -->
   <h2>Co jsem si odnesla<br>&amp; <em>co by přišlo dál</em></h2>
   <p>
     Projekt skončil prezentací výsledného konceptu před stakeholdery,
     kterou jsem vedla s kolegou.
   </p>
   <p>
-    Co jsem si odnesla: formulář může mít správnou logiku i strukturu – a přesto
-    kazit user experience. Stačí špatně zvolená slova.
+    Co jsem si odnesla: formulář může mít správnou logiku i strukturu –
+    a přesto kazit user experience. Stačí špatně zvolená slova.
     UX writing není kosmetika přiložená k hotovému designu.
   </p>
 
   <div class="highlight">
     <p>
-      Testování ukázalo, kde je problém. Čas na dalzí kolo
+      Testování ukázalo, kde je problém. Čas na další kolo
       ale už nebyl – projekt skončil fází prezentace.
     </p>
   </div>
