@@ -237,6 +237,20 @@
     min-height: 220px;
   }
 
+  .case-pdf-block {
+    width: 100%;
+    margin: 2.5rem 0 0.75rem;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .case-pdf-block iframe {
+    display: block;
+    width: 100%;
+    height: 520px;
+    border: none;
+  }
+
   .caption {
     font-size: 0.8rem;
     color: var(--muted);
@@ -381,6 +395,7 @@
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
+    .case-pdf-block iframe { height: 380px; }
   }
 </style>
 </head>
@@ -550,6 +565,13 @@
     <img src="skica_formular.png" alt="Prototyp formuláře – rozbalovací menu a AI asistent">
   </div>
   <p class="caption">Rozbalovací menu pro nepovinné otázky a AI asistent pro průvodní text</p>
+
+  <div class="case-pdf-block">
+    <iframe src="flow_formular.pdf" title="Flow formuláře – před a po redesignu">
+      <p>Prohlédnout PDF: <a href="flow_formular.pdf" target="_blank" rel="noopener">flow_formular.pdf</a></p>
+    </iframe>
+  </div>
+  <p class="caption">Před a po redesignu &ndash; flow v formuláři</p>
 
   <h2>Testování a <em>selhání hypotéz</em></h2>
   <p>
