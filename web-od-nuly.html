@@ -3,66 +3,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kreativní tech studio — Portfolio | B.H.</title>
+<title>Klinika techniků — Portfolio | B.H.</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --ink: #1a1a18; --paper: #ffffff; --accent: #1298a8; --muted: #888880; --line: #e8e6e1; }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #ffffff;
+    --accent: #1298a8;
+    --muted: #888880;
+    --line: #e8e6e1;
+  }
+
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: var(--paper); border-bottom: 1px solid var(--line); }
-  .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+    display: inline-block;
+    cursor: pointer;
+  }
+
   .logo span { color: var(--accent); font-style: italic; }
-  .nav-back { font-size: 0.9rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .logo:hover { opacity: 0.75; }
+
+  .nav-back {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
   .nav-back:hover { color: var(--ink); }
-  .case-hero { max-width: 860px; margin: 0 auto; padding: 10rem 2rem 5rem; text-align: center; }
-  .case-category { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
-  .case-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+
+  .case-hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 10rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .case-category {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
   .case-hero h1 em { font-style: italic; color: var(--accent); }
-  .case-hero-desc { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto 3rem; line-height: 1.85; font-weight: 300; }
-  .case-meta { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1.5rem 0; margin-top: 3rem; }
-  .case-meta-item { text-align: center; }
-  .case-meta-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+
+  .case-hook {
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .case-hook strong { font-weight: 500; color: var(--ink); }
+
+  .case-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+  }
+
+  .case-meta-item {
+    text-align: center;
+    padding: 0 1rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .case-meta-item:last-child { border-right: none; }
+
+  .case-meta-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
   .case-meta-value { font-size: 0.9rem; font-weight: 500; }
-  .case-cover { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
-  .case-cover-img { width: 100%; aspect-ratio: 16/9; background: #fff8f0; display: flex; align-items: center; justify-content: center; padding: 3rem; }
-  .case-content { max-width: 740px; margin: 0 auto; padding: 5rem 2rem; }
-  .case-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.02em; margin-bottom: 1.25rem; margin-top: 3.5rem; }
+
+  .case-cover {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .case-cover-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #fff8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  .case-cover-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .case-content {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .case-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    margin-top: 4rem;
+  }
+
   .case-content h2:first-child { margin-top: 0; }
   .case-content h2 em { font-style: italic; color: var(--accent); }
-  .case-content p { font-size: 1rem; color: var(--muted); line-height: 1.85; font-weight: 300; margin-bottom: 1.25rem; }
-  .case-content ul { list-style: none; margin-bottom: 1.25rem; }
-  .case-content ul li { font-size: 1rem; color: var(--muted); line-height: 1.85; font-weight: 300; padding-left: 1.25rem; position: relative; margin-bottom: 0.4rem; }
-  .case-content ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
-  .case-img-block { width: 100%; background: #f5f5f3; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; margin: 2.5rem 0; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
-  .case-img-block img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .caption { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: -1.5rem; margin-bottom: 2rem; font-style: italic; }
-  .highlight { border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; background: #f0fafb; margin: 2rem 0; }
-  .highlight p { color: var(--ink); font-weight: 400; margin: 0; }
-  .divider { max-width: 1100px; margin: 0 auto; padding: 0 4rem; border-top: 1px solid var(--line); }
-  .case-nav { max-width: 1100px; margin: 0 auto; padding: 4rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
-  .case-nav a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+
+  .case-content > h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .case-content p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .case-content ul { list-style: none; margin-bottom: 1.5rem; }
+
+  .case-content ul li {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-content ul li::before {
+    content: '\2013';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .case-img-block {
+    width: 100%;
+    background: #f5f5f3;
+    margin: 2.5rem 0 0.75rem;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  .case-img-block.ratio-43 { aspect-ratio: 4/3; }
+  .case-img-block.ratio-169 { aspect-ratio: 16/9; }
+  .case-img-block.ratio-11 { aspect-ratio: 1/1; }
+
+  .case-img-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .case-img-block:hover img { transform: scale(1.02); }
+
+  .case-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    min-height: 220px;
+  }
+
+  .caption {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .img-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .img-pair .case-img-block { margin: 0; }
+
+  .highlight {
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    background: #f0fafb;
+    margin: 2.5rem 0;
+  }
+
+  .highlight p {
+    color: var(--ink);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .decision-card { border: 1px solid var(--line); padding: 1.5rem; }
+
+  .decision-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .decision-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .decision-card p { font-size: 0.9rem; margin: 0; line-height: 1.7; }
+
+  .case-proto-block {
+    width: 100%;
+    margin: 2.5rem 0 0.75rem;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .case-proto-block iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    border: none;
+  }
+
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .case-nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .case-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
   .case-nav a:hover { color: var(--ink); }
   .case-nav .next { text-align: right; }
-  footer { border-top: 1px solid var(--line); padding: 2rem 4rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   footer p { font-size: 0.8rem; color: var(--muted); }
-  .btn { display: inline-block; padding: 0.75rem 1.75rem; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em; border: 1px solid var(--ink); transition: background 0.2s, border-color 0.2s, transform 0.15s; }
-  .btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
-  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  .btn-outline:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.75rem;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
     .case-hero { padding: 8rem 1.5rem 3rem; }
     .case-cover { padding: 0 1.5rem; }
     .case-content { padding: 3rem 1.5rem; }
-    .case-meta { gap: 1.5rem; }
+    .case-meta { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0; }
+    .case-meta-item:nth-child(2) { border-right: none; }
+    .case-meta-item:nth-child(3) { border-right: 1px solid var(--line); }
+    .case-meta-item:nth-child(3),
+    .case-meta-item:nth-child(4) { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .img-pair { grid-template-columns: 1fr; }
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
+    .case-proto-block iframe { height: 320px; }
   }
 </style>
 </head>
 <body>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <nav>
   <a href="index.html" class="logo">Barbora <span>Hlinková</span></a>
@@ -70,50 +424,134 @@
 </nav>
 
 <div class="case-hero">
-  <div class="case-category">UI design · struktura · prototyp</div>
-  <h1>Kreativní tech studio —<br><em>návrh webu</em> pro vzdělávací projekt</h1>
-  <p class="case-hero-desc">Od prázdné stránky k funkčnímu prototypu webu pro vzdělávací studio.</p>
+  <div class="case-category">UX/UI design · kurz · web od nuly</div>
+  <h1>Klinika techniků —<br><em>barevný web</em> pro svět robotiky a kódu</h1>
+  <p class="case-hook">
+    Šest měsíců kurzu. Jedno zadání: navrhnout web od nuly. Vybrala jsem si DDM Ulita —
+    pobočku, kde děti staví roboty, weby a programují hry. A hned na začátku jsem narazila
+    na základní otázku: <strong>jak v jednom vizuálním stylu skloubit barevný dětský svět
+    s věcností techniky?</strong>
+  </p>
   <div class="case-meta">
     <div class="case-meta-item">
       <div class="case-meta-label">Role</div>
-      <div class="case-meta-value">UX/UI designérka</div>
+      <div class="case-meta-value">Solo UX/UI designérka</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Typ</div>
-      <div class="case-meta-value">Klientský projekt</div>
+      <div class="case-meta-value">Kurz UX/UI</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Nástroje</div>
       <div class="case-meta-value">Figma</div>
     </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Časový rámec</div>
+      <div class="case-meta-value">3 měsíce</div>
+    </div>
   </div>
 </div>
 
 <div class="case-cover">
-  <div class="case-cover-img">
-    <img src="image 1678720203.png" alt="Ulito logo" style="width: 120px; max-width: 30%; object-fit: contain; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+  <div class="case-cover-img" data-zoomable>
+    <img src="image 1678720203.png" alt="DDM Ulita — Klinika techniků" style="max-width: 30%; object-fit: contain; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
   </div>
 </div>
 
 <div class="case-content">
 
-  <h2>Kontext &amp; <em>problém</em></h2>
-  <p>Sem přijde popis kontextu a problému, který projekt řešil.</p>
+  <h2>O projektu &amp; <em>Moje role</em></h2>
+  <p>
+    Klinika techniků je specializovaná pobočka DDM Ulita na Praze 3. Kroužky robotiky,
+    modelářství a programování — provoz, který si zaslouží web stejně funkční a přehledný
+    jako projekty, které tam vznikají. Cílem bylo navrhnout koncept webu, který pobočce
+    pomůže prezentovat její aktivity a kroužky.
+  </p>
+  <p>
+    Na projektu jsem pracovala zcela samostatně. Poprvé jsem si prošla celým designovým
+    procesem v jednom kuse — od výzkumu přes uživatelské toky a wireframy až po vizuální
+    styl a interaktivní prototyp ve Figmě.
+  </p>
+  <ul>
+    <li><strong>Design constraint:</strong> Vizuální identita musela vycházet z barev loga
+    DDM Ulita — ale zároveň nově komunikovat technické zaměření pobočky. Barvy byly dané.
+    Příběh byl na mně.</li>
+  </ul>
 
-  <h2>Proces</h2>
-  <p>Sem přijde popis procesu — výzkum, návrh, testování.</p>
+  <h2>Vizuální směr: <em>Moodboard a Stylescape</em></h2>
+  <p>
+    Tato fáze mě překvapila nejvíc. Poprvé jsem si vyzkoušela přetavit abstraktní zadání
+    do vizuálních emocí — a zjistila jsem, že hledání vizuálního jazyka je designérská
+    práce, ne jen estetická volba.
+  </p>
 
-  <div class="case-img-block">Obrázek / screenshot</div>
-
-  <h2>Řešení</h2>
-  <p>Sem přijde popis finálního řešení.</p>
-
-  <div class="highlight">
-    <p>Klíčový poznatek nebo citát z projektu.</p>
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="decision-label">Fáze 01</div>
+      <h3>Moodboard &amp; Stylescape</h3>
+      <p>Hledala jsem rovnováhu mezi dvěma světy: hravostí dětského prostředí a barevností
+      techniky. Moodboard mi pomohl ukotvit, jaký pocit má web vyvolávat — ještě předtím,
+      než jsem otevřela Figmu.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Fáze 02</div>
+      <h3>Mini design systém</h3>
+      <p>Na základě barev z loga jsem postavila systém komponent — typografii, stavy
+      tlačítek, opakující se prvky. Poprvé jsem zažila, co znamená vizuální konzistence
+      napříč responzivními obrazovkami. A co stojí, když ji nemáte.</p>
+    </div>
   </div>
 
-  <h2>Výsledky</h2>
-  <p>Sem přijdou měřitelné výsledky nebo zpětná vazba.</p>
+  <div class="case-img-block ratio-169">
+    <div class="case-img-placeholder">Obrázek — moodboard / stylescape</div>
+  </div>
+  <p class="caption">Moodboard — hledání vizuálního jazyka mezi hravostí a technikou</p>
+
+  <h2>Přihlašovací formulář: <em>kde jsem narazila na limit</em></h2>
+  <p>
+    Informační architektura a celkový vizuální styl mi vyšly dobře. Ale formulář —
+    tam jsem narazila na svůj tehdy největší limit.
+  </p>
+  <p>
+    Prvky nedržely pohromadě. Rozhraní nevypadalo přesvědčivě. A já tehdy neměla v prstech
+    dost Figmy, abych věděla proč — natož abych to opravila.
+  </p>
+
+  <div class="highlight">
+    <p>
+      Formuláře jsou designérsky náročné přesně proto, že slabé místo nemůžete schovat
+      za dekoraci — každý prvek musí dávat smysl sám o sobě. Tuhle lekci jsem si vzala
+      do dalšího projektu a formulářům věnovala velkou pečlivost.
+    </p>
+  </div>
+
+  <div class="case-img-block ratio-169">
+    <div class="case-img-placeholder">Obrázek — finální prototyp / screenshoty</div>
+  </div>
+  <p class="caption">Ukázka z interaktivního prototypu — homepage a struktura kroužků</p>
+
+  <h2>Výsledný <em>prototyp</em></h2>
+  <p>Interaktivní prototyp celého konceptu ve Figmě:</p>
+
+  <div class="case-proto-block">
+    <iframe src="https://embed.figma.com/proto/L911mDrHiMmWHI1X0l1Zbp/Kreativn%C3%AD-tech-studio?node-id=525-1043&scaling=min-zoom&content-scaling=fixed&page-id=255%3A15&starting-point-node-id=525%3A1043&embed-host=share" allowfullscreen title="Interaktivní prototyp — Klinika techniků (Figma)"></iframe>
+  </div>
+  <p class="caption">Interaktivní prototyp — Figma</p>
+
+  <h2>Závěr: <em>Co mi projekt přinesl</em></h2>
+  <p>
+    Tento projekt byl můj první průchod celým designovým procesem od začátku do konce.
+    A právě proto mi dal tři věci, které se nedají naučit jinak:
+  </p>
+  <ul>
+    <li><strong>Figmu opravdu do ruky:</strong> Od základů ke komponentám, autolayoutu
+    a prototypování. Pochopila jsem rozdíl mezi Figmou jako nástrojem a Figmou jako
+    designovým myšlením.</li>
+    <li><strong>UX myšlení v praxi:</strong> Dobrá struktura ušetří dny práce ve finálním
+    vizuálu. Ne naopak.</li>
+    <li><strong>Schopnost obhájit rozhodnutí:</strong> Prezentace před mentory mě naučila
+    brát kritiku jako nástroj, ne jako hodnocení.</li>
+  </ul>
 
 </div>
 
@@ -128,8 +566,50 @@
 
 <footer>
   <p>Barbora Hlinková · 2026</p>
-  <p>Praha · <a href="https://zvidave.cz" style="color: var(--muted); text-decoration: none;">Zvídavě.cz</a></p>
+  <p>Praha</p>
 </footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.case-img-block img').forEach(function(img) {
+    img.parentElement.addEventListener('click', function() {
+      if (img.complete && img.naturalWidth > 0) openLightbox(img.src, img.alt);
+    });
+  });
+
+  var coverBlock = document.querySelector('.case-cover-img[data-zoomable]');
+  if (coverBlock) {
+    coverBlock.addEventListener('click', function() {
+      var img = coverBlock.querySelector('img');
+      if (img) openLightbox(img.src, img.alt);
+    });
+  }
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
