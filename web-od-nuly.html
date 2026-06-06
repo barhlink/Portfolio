@@ -299,18 +299,39 @@
 
   .decision-card p { font-size: 0.9rem; margin: 0; line-height: 1.7; }
 
-  .case-proto-block {
-    width: 100%;
+  .proto-link-block {
     margin: 2.5rem 0 0.75rem;
     border: 1px solid var(--line);
-    overflow: hidden;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
   }
 
-  .case-proto-block iframe {
-    display: block;
-    width: 100%;
-    height: 500px;
-    border: none;
+  .proto-link-block p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .btn-proto {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--ink);
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-proto:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
   }
 
   .divider {
@@ -407,7 +428,6 @@
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
-    .case-proto-block iframe { height: 320px; }
   }
 </style>
 </head>
@@ -551,10 +571,11 @@
   <h2>Výsledný <em>prototyp</em></h2>
   <p>Interaktivní prototyp celého konceptu ve Figmě:</p>
 
-  <div class="case-proto-block">
-    <iframe src="https://embed.figma.com/proto/L911mDrHiMmWHI1X0l1Zbp/Kreativn%C3%AD-tech-studio?node-id=525-1043&scaling=min-zoom&content-scaling=fixed&page-id=255%3A15&starting-point-node-id=525%3A1043&embed-host=share" allowfullscreen title="Interaktivní prototyp — Klinika techniků (Figma)"></iframe>
+  <div class="proto-link-block">
+    <p>Klinika techniků &ndash; interaktivní prototyp</p>
+    <a href="https://www.figma.com/proto/L911mDrHiMmWHI1X0l1Zbp/Kreativn%C3%AD-tech-studio?node-id=525-1043&scaling=min-zoom&content-scaling=fixed&page-id=255%3A15&starting-point-node-id=525%3A1043" target="_blank" rel="noopener" class="btn-proto">Otevřít prototyp ve Figmě →</a>
   </div>
-  <p class="caption">Interaktivní prototyp — Figma</p>
+  <p class="caption">Otevře se v novém okně &ndash; Figma</p>
 
   <h2>Závěr: <em>co mi projekt přinesl</em></h2>
   <p>
