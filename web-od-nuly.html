@@ -247,15 +247,6 @@
     font-style: italic;
   }
 
-  .img-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin: 2.5rem 0 0.75rem;
-  }
-
-  .img-pair .case-img-block { margin: 0; }
-
   .highlight {
     border-left: 3px solid var(--accent);
     padding: 1.25rem 1.5rem;
@@ -424,7 +415,6 @@
     .case-meta-item:nth-child(3),
     .case-meta-item:nth-child(4) { border-top: 1px solid var(--line); padding-top: 1.25rem; }
     .decision-grid { grid-template-columns: 1fr; }
-    .img-pair { grid-template-columns: 1fr; }
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
@@ -506,8 +496,8 @@
     web prochází.
   </p>
 
-  <div class="case-img-block ratio-43">
-    <img src="Persona%201%201.png" alt="Persona – jedna ze čtyř uživatelských person">
+  <div class="case-img-block ratio-43" style="background: #fafafa;">
+    <img src="Persona%201%201.png" alt="Persona – jedna ze čtyř uživatelských person" style="object-fit: contain;">
   </div>
   <p class="caption">Jedna ze čtyř person – základ pro strukturální i vizuální rozhodování</p>
 
@@ -535,15 +525,15 @@
     </div>
   </div>
 
-  <div class="img-pair">
-    <div class="case-img-block ratio-43">
-      <img src="Moodboard%201.png" alt="Moodboard – vizuální inspirace a atmosféra">
-    </div>
-    <div class="case-img-block ratio-43">
-      <img src="Stylescape%20Template%201.png" alt="Stylescape – vizuální styl a barevnost">
-    </div>
+  <div class="case-img-block ratio-169">
+    <img src="Moodboard%201.png" alt="Moodboard – vizuální inspirace a atmosféra">
   </div>
-  <p class="caption">Moodboard a stylescape – hledání vizuálního jazyka mezi hravostí a technikou</p>
+  <p class="caption">Moodboard – hledání vizuálního jazyka mezi hravostí a technikou</p>
+
+  <div class="case-img-block ratio-169" style="background: #fafafa;">
+    <img src="Stylescape%20Template%201.png" alt="Stylescape – vizuální styl a barevnost" style="object-fit: contain;">
+  </div>
+  <p class="caption">Stylescape – výsledný vizuální styl a barevnost</p>
 
   <h2>Přihlašovací formulář: <em>kde jsem narazila na limit</em></h2>
   <p>
