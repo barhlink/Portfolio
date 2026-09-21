@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velabrain – výdej obědů na otisk prstu · Portfolio | B.H.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --paper: #ffffff;
+    --accent: #1298a8;
+    --muted: #888880;
+    --line: #e8e6e1;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--ink);
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .logo span { color: var(--accent); font-style: italic; }
+  .logo:hover { opacity: 0.75; }
+
+  .nav-back {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-back:hover { color: var(--ink); }
+
+  /* CASE HERO */
+  .case-hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 10rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .case-category {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-hero h1 em { font-style: italic; color: var(--accent); }
+
+  .case-hook {
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .case-hook strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .case-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+  }
+
+  .case-meta-item {
+    text-align: center;
+    padding: 0 1rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .case-meta-item:last-child { border-right: none; }
+
+  .case-meta-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .case-meta-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* COVER IMAGE */
+  .case-cover {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .case-cover-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #fdf1e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  .case-cover-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* CONTENT */
+  .case-content {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .case-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    margin-top: 4rem;
+  }
+
+  .case-content h2:first-child { margin-top: 0; }
+
+  .case-content h2 em { font-style: italic; color: var(--accent); }
+
+  .case-content > h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .case-content p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .case-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-content ul li {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-content ul li::before {
+    content: '\2013';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* IMAGE BLOCK */
+  .case-img-block {
+    width: 100%;
+    background: #f5f5f3;
+    margin: 2.5rem 0 0.75rem;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  .case-img-block.ratio-43 { aspect-ratio: 4/3; }
+  .case-img-block.ratio-169 { aspect-ratio: 16/9; }
+  .case-img-block.ratio-11 { aspect-ratio: 1/1; }
+
+  .case-img-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .case-img-block:hover img { transform: scale(1.02); }
+
+  .case-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    min-height: 220px;
+    text-align: center;
+    padding: 1rem;
+    cursor: default;
+  }
+
+  .caption {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  /* TWO-UP IMAGE GRID */
+  .img-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .img-pair .case-img-block { margin: 0; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    background: #f0fafb;
+    margin: 2.5rem 0;
+  }
+
+  .highlight p {
+    color: var(--ink);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--line);
+    margin: 2rem 0;
+  }
+
+  .stat-item {
+    flex: 1;
+    padding: 1.5rem;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-number em { font-style: italic; color: var(--accent); }
+
+  .stat-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* DECISION CARDS */
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .decision-card {
+    border: 1px solid var(--line);
+    padding: 1.5rem;
+  }
+
+  .decision-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .decision-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .decision-card p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* NAV NEXT/PREV */
+  .case-nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .case-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .case-nav a:hover { color: var(--ink); }
+  .case-nav .next { text-align: right; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p { font-size: 0.8rem; color: var(--muted); }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.75rem;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .case-hero { padding: 8rem 1.5rem 3rem; }
+    .case-cover { padding: 0 1.5rem; }
+    .case-content { padding: 3rem 1.5rem; }
+    .case-meta { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0; }
+    .case-meta-item:nth-child(2) { border-right: none; }
+    .case-meta-item:nth-child(3) { border-right: 1px solid var(--line); }
+    .case-meta-item:nth-child(3),
+    .case-meta-item:nth-child(4) { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .img-pair { grid-template-columns: 1fr; }
+    .stat-row { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .stat-item:last-child { border-bottom: none; }
+    .case-nav { padding: 2.5rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .divider { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<nav>
+  <a href="index.html" class="logo">Barbora <span>Hlinková</span></a>
+  <a href="index.html#prace" class="nav-back">← Zpět na portfolio</a>
+</nav>
+
+<!-- HERO -->
+<div class="case-hero">
+  <div class="case-category">UX/UI design · IoT · reálný provoz</div>
+  <h1>Velabrain –<br>ob&#283;d <em>na jeden prst</em></h1>
+  <p class="case-hook">
+    Ve &#353;koln&#237; j&#237;deln&#283; je na v&#253;dej p&#225;r minut a u ok&#233;nka stoj&#237; fronta d&#283;t&#237;.
+    Kucha&#345;ky do t&#233; doby hledaly jm&#233;na na pap&#237;&#345;e a d&#283;ti si nepamatovaly, co si
+    objednaly. <strong>Cht&#283;la jsem, aby sta&#269;ilo p&#345;ilo&#382;it prst ke &#269;te&#269;ce</strong>
+    a kuchyn&#283; hned vid&#283;la, komu co vydat.
+  </p>
+  <div class="case-meta">
+    <div class="case-meta-item">
+      <div class="case-meta-label">Role</div>
+      <div class="case-meta-value">Produktov&#225; design&#233;rka &#8211; n&#225;vrh, UX/UI, architektura, nasazen&#237;</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Typ</div>
+      <div class="case-meta-value">Intern&#237; syst&#233;m pro Z&#352; Vela</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">N&#225;stroje</div>
+      <div class="case-meta-value">Figma &#183; HTML/CSS/JS &#183; Node.js &#183; Raspberry Pi &#183; 2N Access Unit &#183; Bubble &#183; Claude Code</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">&#268;asov&#253; r&#225;mec</div>
+      <div class="case-meta-value">B&#345;ezen &#8211; Z&#225;&#345;&#237; 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- COVER -->
+<div class="case-cover">
+  <div class="case-cover-img" data-zoomable>
+    <img src="velabrain_vstup.jpg" alt="Tablet u vstupu do j&#237;delny &#8211; v&#253;zva P&#345;ilo&#382; prst ke &#269;te&#269;ce">
+  </div>
+  <p class="caption" style="margin-top: 0.75rem;">Screenshoty jsou po&#345;&#237;zen&#233; na po&#269;&#237;ta&#269;i, ne p&#345;&#237;mo na tabletu, na kter&#233;m syst&#233;m b&#283;&#382;&#237; &#8211; proto jin&#233; proporce ne&#382; v re&#225;ln&#233;m provozu.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="case-content">
+
+  <!-- 1. O PROJEKTU -->
+  <h2>O projektu &amp; <em>moje role</em></h2>
+  <p>
+    Ob&#283;dy si rodiny objedn&#225;vaj&#237; v aplikaci Velamenu. Chyb&#283;la druh&#225; p&#367;lka
+    &#8211; v&#253;dej. Navrhla jsem syst&#233;m, kter&#253; propojuje &#269;te&#269;ku otisk&#367; prst&#367; 2N,
+    mal&#253; server na Raspberry Pi a dva tablety: jeden u vstupu do j&#237;delny,
+    druh&#253; v kuchyni u v&#253;dejn&#237;ho ok&#233;nka.
+  </p>
+  <p>
+    Projekt jsem vedla cel&#253; sama &#8211; od pr&#367;zkumu API &#269;te&#269;ky a sch&#367;zek s veden&#237;m
+    &#353;koly p&#345;es n&#225;vrh rozhran&#237; a&#382; po ostr&#233; nasazen&#237; v j&#237;deln&#283;. K&#243;d jsem psala
+    s pomoc&#237; Clauda Code: j&#225; jsem ur&#269;ovala logiku, chov&#225;n&#237; a vzhled, AI
+    p&#345;ekl&#225;dala zad&#225;n&#237; do k&#243;du a j&#225; ho testovala a nasazovala.
+  </p>
+  <div class="highlight">
+    <p>
+      Hlavn&#237; ot&#225;zka: jak navrhnout rozhran&#237;, kter&#233; funguje pod &#269;asov&#253;m
+      tlakem, v hluku a pro lidi, kte&#345;&#237; na n&#283;j nemaj&#237; &#269;as se d&#237;vat.
+    </p>
+  </div>
+
+  <!-- 2. UZIVATELE -->
+  <h2>U&#382;ivatel&#233; a <em>kontext</em></h2>
+  <p>
+    M&#225;m t&#345;i skupiny u&#382;ivatel&#367; a ka&#382;d&#225; pot&#345;ebuje n&#283;co jin&#233;ho.
+  </p>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="decision-label">A</div>
+      <h3>D&#283;ti u vstupu</h3>
+      <p>Od p&#345;ed&#353;kol&#225;k&#367; po dev&#357;&#225;ky. Ne&#269;tou dlouh&#233; texty, necht&#283;j&#237; na nic
+      klikat. Pot&#345;ebuj&#237; jedinou instrukci a jasnou zp&#283;tnou vazbu, &#382;e &#269;te&#269;ka
+      zafungovala.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">B</div>
+      <h3>Kucha&#345;ky u ok&#233;nka</h3>
+      <p>Maj&#237; pln&#233; ruce a d&#237;vaj&#237; se na tablet z metru a p&#367;l. Pot&#345;ebuj&#237;
+      velk&#253;, okam&#382;it&#283; &#269;iteln&#253; &#250;daj: kdo p&#345;i&#353;el a jak&#233; j&#237;dlo mu d&#225;t.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">C</div>
+      <h3>Veden&#237; a provoz</h3>
+      <p>Pot&#345;ebuje p&#345;ehled, kolik j&#237;del se vydalo, a jistotu, &#382;e v&#253;dej
+      nespadne.</p>
+    </div>
+  </div>
+
+  <p>
+    Z toho vypl&#253;vala priorita, podle kter&#233; jsem rozhodovala v&#353;echno dal&#353;&#237;:
+    spolehlivost v&#253;deje m&#225; p&#345;ednost p&#345;ed nov&#253;mi funkcemi.
+  </p>
+
+  <!-- 3. NAVRH -->
+  <h2>N&#225;vrh a <em>UX principy</em></h2>
+  <p>
+    Od prvn&#237;ho prototypu dr&#382;&#237; aplikace n&#283;kolik pevn&#253;ch pravidel:
+  </p>
+  <ul>
+    <li><strong>&#268;itelnost na d&#225;lku.</strong> N&#225;zev j&#237;dla 28&#160;px v nejsiln&#283;j&#353;&#237;m
+    &#345;ezu, jm&#233;no 20&#160;px. Kucha&#345;ka ho p&#345;e&#269;te bez nakl&#225;n&#283;n&#237; k tabletu.</li>
+    <li><strong>Velk&#233; dotykov&#233; c&#237;le.</strong> Minim&#225;ln&#283; 52&#160;px &#8211; na tablet se
+    sah&#225; mokrou rukou nebo v rukavici.</li>
+    <li><strong>Automatick&#253; n&#225;vrat.</strong> Po v&#253;deji se obrazovka sama vy&#269;ist&#237;
+    (6&#160;s, u varov&#225;n&#237; 8&#160;s) s viditeln&#253;m progress barem, tak&#382;e nikdo nemus&#237;
+    nic zav&#237;rat.</li>
+    <li><strong>Chyba nikdy nekon&#269;&#237; ve slep&#233; uli&#269;ce.</strong> Kdy&#382; otisk selh&#225;,
+    v&#382;dy je po ruce Ru&#269;n&#237; v&#253;b&#283;r &#8211; d&#237;t&#283; se k ob&#283;du dostane i bez &#269;te&#269;ky.</li>
+    <li><strong>Stav syst&#233;mu na o&#269;&#237;ch.</strong> Zelen&#225; te&#269;ka &#8222;p&#345;ipojeno&#8220;
+    a &#8222;2N &#269;te&#269;ka&#8220; v hlavi&#269;ce &#8211; obsluha hned vid&#237;, jestli je probl&#233;m
+    v s&#237;ti, nebo v &#269;te&#269;ce.</li>
+  </ul>
+
+  <div class="case-img-block ratio-169">
+    <img src="velabrain_vydej.jpg" alt="Tablet v kuchyni &#8211; p&#345;ehled Pr&#225;v&#283; p&#345;ich&#225;z&#237; a Dnes vyd&#225;no">
+  </div>
+  <p class="caption">Tablet v kuchyni &#8211; p&#345;ehled podle v&#283;kov&#253;ch skupin, &#8222;Pr&#225;v&#283; p&#345;ich&#225;z&#237;&#8220; a &#8222;Dnes vyd&#225;no&#8220;</p>
+
+  <p>
+    V&#253;dejn&#237; tablet je rozd&#283;len&#253; na dv&#283; z&#243;ny: naho&#345;e <strong>Pr&#225;v&#283;
+    p&#345;ich&#225;z&#237;</strong> (d&#237;t&#283;, kter&#233; pr&#225;v&#283; p&#345;ilo&#382;ilo prst), dole <strong>Dnes
+    vyd&#225;no</strong>. V hlavi&#269;ce b&#283;&#382;&#237; pr&#367;b&#283;&#382;n&#233; po&#269;ty podle skupin &#8211;
+    p&#345;ed&#353;kol&#225;ci, 1. a 2. stupe&#328; &#8211; tak&#382;e kuchyn&#283; vid&#237;, kolik j&#237;del je&#353;t&#283;
+    zb&#253;v&#225;.
+  </p>
+
+  <!-- 4. ITERACE -->
+  <h2>Iterace z <em>provozu</em></h2>
+  <p>
+    Po nasazen&#237; v &#269;ervnu se ukázalo, &#382;e realita j&#237;delny je pestrej&#353;&#237; ne&#382;
+    objedn&#225;vkov&#253; syst&#233;m. P&#345;ijde d&#237;t&#283;, kter&#233; si ob&#283;d zapomn&#283;lo objednat.
+    P&#345;ijde nov&#253; &#382;&#225;k, kter&#253; je&#353;t&#283; nem&#225; otisk. U&#269;itel s t&#345;&#237;dou na v&#253;letu
+    se vr&#225;t&#237; d&#345;&#237;v.
+  </p>
+  <p>
+    Proto vznikl <strong>v&#253;dej bez objedn&#225;vky</strong> &#8211; rychl&#233; tla&#269;&#237;tko,
+    kter&#233; kuchyn&#283; zapne v nastaven&#237;, kdy&#382; ho pot&#345;ebuje. Ve v&#253;choz&#237;m stavu
+    je skryt&#233;, aby neodv&#225;d&#283;lo pozornost od b&#283;&#382;n&#233;ho pr&#367;chodu.
+  </p>
+
+  <div class="case-img-block ratio-169">
+    <img src="velabrain_nastaveni.jpg" alt="Nastaven&#237; v&#253;deje &#8211; p&#345;ep&#237;na&#269; V&#253;dej bez objedn&#225;vky">
+  </div>
+  <p class="caption">Nastaven&#237; v&#253;deje &#8211; p&#345;ep&#237;na&#269; &#8222;V&#253;dej bez objedn&#225;vky&#8220;</p>
+
+  <p>
+    Ru&#269;n&#237; v&#253;b&#283;r jsem navrhla jako dva kroky &#8211; nejd&#345;&#237;v osoba (s vyhled&#225;v&#225;n&#237;m
+    a rozd&#283;len&#237;m na p&#345;ed&#353;kol&#225;ky, 1. a 2. stupe&#328; a dosp&#283;l&#233;), potom j&#237;dlo
+    z denn&#237; nab&#237;dky. Dva jednoduch&#233; kroky jsou pod tlakem rychlej&#353;&#237; ne&#382;
+    jeden slo&#382;it&#253; formul&#225;&#345;.
+  </p>
+
+  <!-- 5. TECHNICKE ROZHODNUTI -->
+  <h2>Technick&#233; <em>rozhodnut&#237;</em>, kter&#233; zm&#283;nilo n&#225;vrh</h2>
+  <p>
+    P&#367;vodn&#283; m&#283;l server &#269;te&#269;ku pr&#367;b&#283;&#382;n&#283; &#8222;obvol&#225;vat&#8220; a pt&#225;t se, jestli
+    n&#283;kdo p&#345;ilo&#382;il prst. P&#345;i nasazen&#237; se uk&#225;zalo, &#382;e to bez dra&#382;&#353;&#237; licence
+    nejde. M&#237;sto toho jsem vyu&#382;ila automatizaci p&#345;&#237;mo ve &#269;te&#269;ce: p&#345;i
+    p&#345;ilo&#382;en&#237; prstu sama po&#353;le zpr&#225;vu serveru.
+  </p>
+  <p>
+    V&#253;sledek je rychlej&#353;&#237; a spolehliv&#283;j&#353;&#237; &#8211; tablet v kuchyni reaguje
+    okam&#382;it&#283;, bez zpo&#382;d&#283;n&#237; a bez zbyte&#269;n&#233; z&#225;t&#283;&#382;e s&#237;t&#283;. Nau&#269;ilo m&#283; to,
+    &#382;e omezen&#237; v hardwaru je &#269;asto n&#225;pov&#283;da k lep&#353;&#237;mu &#345;e&#353;en&#237;, ne p&#345;ek&#225;&#382;ka.
+  </p>
+
+  <!-- 6. VYSLEDKY -->
+  <h2>V&#253;sledky a <em>dopad v praxi</em></h2>
+  <p>
+    Kucha&#345;ky u&#382; nehledaj&#237; jm&#233;na na pap&#237;&#345;e a d&#283;ti nemus&#237; nic hl&#225;sit &#8211;
+    sta&#269;&#237; p&#345;ilo&#382;it prst.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-number"><em>1</em></div>
+      <div class="stat-desc">cel&#253; pr&#367;chod v ostr&#233;m provozu<br>prst &#8594; identifikace &#8594; ob&#283;d</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><em>2</em></div>
+      <div class="stat-desc">tablety propojen&#233;<br>v re&#225;ln&#233;m &#269;ase</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><em>240</em></div>
+      <div class="stat-desc">u&#382;ivatel&#367; nap&#225;rovan&#253;ch mezi<br>&#269;te&#269;kou a objedn&#225;vkov&#253;m syst&#233;mem</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><em>2</em></div>
+      <div class="stat-desc">pobo&#269;ky &#353;koly<br>v pl&#225;nu</div>
+    </div>
+  </div>
+
+  <!-- 7. RETROSPEKTIVA -->
+  <h2>Retrospektiva &amp; <em>co d&#225;l?</em></h2>
+  <p>
+    Nejv&#283;t&#353;&#237; v&#253;zvou nebyl design ani k&#243;d, ale propojen&#237; t&#345;&#237; syst&#233;m&#367;,
+    kter&#233; spolu nikdy mluvit nem&#283;ly: &#269;te&#269;ky, objedn&#225;vek v Bubble a tablet&#367;
+    v j&#237;deln&#283;. Nau&#269;ila jsem se &#269;&#237;st dokumentaci API, p&#345;em&#253;&#353;let o v&#253;padc&#237;ch
+    s&#237;t&#283; a navrhovat tak, aby syst&#233;m selhal &#8222;m&#283;kce&#8220;.
+  </p>
+
+  <div class="highlight">
+    <p>
+      Kdybych za&#269;&#237;nala znovu, u&#382; p&#345;ed prvn&#237;m prototypem bych s veden&#237;m
+      uzav&#345;ela t&#233;ma biometrick&#253;ch dat d&#283;t&#237; &#8211; souhlasy, ulo&#382;en&#237; a p&#345;&#237;stupov&#225;
+      pr&#225;va. Je to jedin&#225; &#269;&#225;st projektu, kterou nevy&#345;e&#353;&#237; k&#243;d.
+    </p>
+  </div>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="decision-label">Dal&#353;&#237; krok 01</div>
+      <h3>Druh&#225; pobo&#269;ka</h3>
+      <p>Samoobsluh&#225; verze s jedn&#237;m tabletem pro pobo&#269;ku D&#283;dina &#8211; jin&#253;
+      provoz, jin&#253; n&#225;vrh.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Dal&#353;&#237; krok 02</div>
+      <h3>Odolnost a p&#345;ehledy</h3>
+      <p>Ulo&#382;en&#237; vydan&#253;ch ob&#283;d&#367; tak, aby p&#345;e&#382;ily restart serveru, denn&#237;
+      export pro kuchyni a kiosk re&#382;im na tabletech.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="case-nav">
+  <a href="formulare.html">← Redesign formuláře</a>
+  <a href="index.html#prace" class="next">Všechny projekty →</a>
+</div>
+
+<div class="divider"></div>
+
+<footer>
+  <p>Barbora Hlinková · 2026</p>
+  <p>Praha</p>
+</footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.case-img-block img').forEach(function(img) {
+    img.parentElement.addEventListener('click', function() {
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  var coverBlock = document.querySelector('.case-cover-img[data-zoomable]');
+  if (coverBlock) {
+    var coverImg = coverBlock.querySelector('img');
+    if (coverImg) {
+      coverBlock.addEventListener('click', function() {
+        openLightbox(coverImg.src, coverImg.alt);
+      });
+    }
+  }
+
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
