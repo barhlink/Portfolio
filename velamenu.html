@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atmoskop – redesign formuláře · Portfolio | B.H.</title>
+<title>Výdejní systém obědů – Portfolio | B.H.</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,6 +26,7 @@
     line-height: 1.6;
   }
 
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -61,6 +62,7 @@
 
   .nav-back:hover { color: var(--ink); }
 
+  /* CASE HERO */
   .case-hero {
     max-width: 860px;
     margin: 0 auto;
@@ -96,7 +98,10 @@
     font-weight: 300;
   }
 
-  .case-hook strong { font-weight: 500; color: var(--ink); }
+  .case-hook strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
 
   .case-meta {
     display: grid;
@@ -124,8 +129,12 @@
     margin-bottom: 0.3rem;
   }
 
-  .case-meta-value { font-size: 0.9rem; font-weight: 500; }
+  .case-meta-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
 
+  /* COVER IMAGE */
   .case-cover {
     width: 100%;
     max-width: 1100px;
@@ -136,8 +145,13 @@
   .case-cover-img {
     width: 100%;
     aspect-ratio: 16/9;
-    background: #f0f6fa;
+    background: #fdf1e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
     overflow: hidden;
+    cursor: zoom-in;
   }
 
   .case-cover-img img {
@@ -147,6 +161,7 @@
     display: block;
   }
 
+  /* CONTENT */
   .case-content {
     max-width: 740px;
     margin: 0 auto;
@@ -162,6 +177,7 @@
   }
 
   .case-content h2:first-child { margin-top: 0; }
+
   .case-content h2 em { font-style: italic; color: var(--accent); }
 
   .case-content > h3 {
@@ -181,7 +197,10 @@
     margin-bottom: 1.25rem;
   }
 
-  .case-content ul { list-style: none; margin-bottom: 1.5rem; }
+  .case-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
 
   .case-content ul li {
     font-size: 1rem;
@@ -200,6 +219,7 @@
     color: var(--accent);
   }
 
+  /* IMAGE BLOCK */
   .case-img-block {
     width: 100%;
     background: #f5f5f3;
@@ -210,6 +230,7 @@
 
   .case-img-block.ratio-43 { aspect-ratio: 4/3; }
   .case-img-block.ratio-169 { aspect-ratio: 16/9; }
+  .case-img-block.ratio-11 { aspect-ratio: 1/1; }
 
   .case-img-block img {
     width: 100%;
@@ -232,20 +253,9 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     min-height: 220px;
-  }
-
-  .case-pdf-block {
-    width: 100%;
-    margin: 2.5rem 0 0.75rem;
-    border: 1px solid var(--line);
-    overflow: hidden;
-  }
-
-  .case-pdf-block iframe {
-    display: block;
-    width: 100%;
-    height: 520px;
-    border: none;
+    text-align: center;
+    padding: 1rem;
+    cursor: default;
   }
 
   .caption {
@@ -256,6 +266,17 @@
     font-style: italic;
   }
 
+  /* TWO-UP IMAGE GRID */
+  .img-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .img-pair .case-img-block { margin: 0; }
+
+  /* HIGHLIGHT BOX */
   .highlight {
     border-left: 3px solid var(--accent);
     padding: 1.25rem 1.5rem;
@@ -271,6 +292,7 @@
     font-size: 1.05rem;
   }
 
+  /* DECISION CARDS */
   .decision-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -278,7 +300,10 @@
     margin: 2rem 0;
   }
 
-  .decision-card { border: 1px solid var(--line); padding: 1.5rem; }
+  .decision-card {
+    border: 1px solid var(--line);
+    padding: 1.5rem;
+  }
 
   .decision-label {
     font-size: 0.7rem;
@@ -297,8 +322,13 @@
     line-height: 1.3;
   }
 
-  .decision-card p { font-size: 0.9rem; margin: 0; line-height: 1.7; }
+  .decision-card p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.7;
+  }
 
+  /* DIVIDER */
   .divider {
     max-width: 1100px;
     margin: 0 auto;
@@ -306,6 +336,7 @@
     border-top: 1px solid var(--line);
   }
 
+  /* NAV NEXT/PREV */
   .case-nav {
     max-width: 1100px;
     margin: 0 auto;
@@ -328,6 +359,7 @@
   .case-nav a:hover { color: var(--ink); }
   .case-nav .next { text-align: right; }
 
+  /* FOOTER */
   footer {
     border-top: 1px solid var(--line);
     padding: 2rem 4rem;
@@ -340,6 +372,7 @@
 
   footer p { font-size: 0.8rem; color: var(--muted); }
 
+  /* LIGHTBOX */
   .lightbox {
     display: none;
     position: fixed;
@@ -378,6 +411,7 @@
 
   .lightbox-close:hover { opacity: 1; }
 
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
     .case-hero { padding: 8rem 1.5rem 3rem; }
@@ -389,15 +423,16 @@
     .case-meta-item:nth-child(3),
     .case-meta-item:nth-child(4) { border-top: 1px solid var(--line); padding-top: 1.25rem; }
     .decision-grid { grid-template-columns: 1fr; }
+    .img-pair { grid-template-columns: 1fr; }
     .case-nav { padding: 2.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     .divider { padding: 0 1.5rem; }
-    .case-pdf-block iframe { height: 380px; }
   }
 </style>
 </head>
 <body>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít">&times;</button>
   <img id="lightbox-img" src="" alt="">
@@ -408,226 +443,150 @@
   <a href="index.html#prace" class="nav-back">← Zpět na portfolio</a>
 </nav>
 
+<!-- HERO -->
 <div class="case-hero">
-  <div class="case-category">UX design · výzkum · UX Summer Camp 2024</div>
-  <h1>Redesign formuláře –<br><em>Atmoskop</em></h1>
+  <div class="case-category">Product build · vibecoding · interní systém</div>
+  <h1>Výdejní systém obědů –<br><em>od papíru</em> ke čtečce otisků</h1>
   <p class="case-hook">
-    Na UX Summer Campu 2024 jsme pro Atmoskop redesignovali odpovědní
-    formulář. Výzkum, workshopy, prototypy a testování – vše za pár dní.
-    <strong>A potvrdili jsme si, co platí skoro vždy: správná struktura
-    nestačí, když máš špatně zvolená slova.</strong>
+    Škola má appku Velamenu, přes kterou rodiče objednávají obědy. Ale u výdeje
+    se pořád kontrolovalo ručně na papíře. <strong>Tak jsem postavila systém,
+    který dnes běží naostro</strong> – dítě přiloží prst ke čtečce a kuchařka
+    na tabletu hned vidí jméno a objednané jídlo.
   </p>
   <div class="case-meta">
     <div class="case-meta-item">
       <div class="case-meta-label">Role</div>
-      <div class="case-meta-value">UX designérka (v týmu)</div>
+      <div class="case-meta-value">Product builder &amp; vývojářka (sólo)</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Typ</div>
-      <div class="case-meta-value">UX Summer Camp</div>
+      <div class="case-meta-value">Interní systém, ostrý provoz</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Nástroje</div>
-      <div class="case-meta-value">Figma</div>
+      <div class="case-meta-value">Raspberry Pi · Node.js · Claude Code</div>
     </div>
     <div class="case-meta-item">
       <div class="case-meta-label">Časový rámec</div>
-      <div class="case-meta-value">Léto 2024</div>
+      <div class="case-meta-value">2026</div>
     </div>
   </div>
 </div>
 
+<!-- COVER -->
 <div class="case-cover">
-  <div class="case-cover-img">
-    <img src="prezentace.png" alt="Prezentace výsledného konceptu na závěrečném setkání">
+  <div class="case-cover-img" data-zoomable>
+    <div class="case-img-placeholder">Screenshot / foto z provozu<br>&#8211; doplní se</div>
   </div>
 </div>
 
+<!-- CONTENT -->
 <div class="case-content">
 
-  <h2>O projektu &amp; <em>moje role</em></h2>
+  <!-- 1. PROBLEM -->
+  <h2>Problém &amp; <em>zadání</em></h2>
   <p>
-    Atmoskop je platforma, kde lidé hodnotí zaměstnavatele. Jeden z klíčových
-    momentů na webu nastává, když se uživatel rozhodne firmě napsat a reagovat
-    na pracovní pozici. Cílem projektu bylo celý odpovědní formulář redesignovat
-    – tak, aby odpovídal potřebám cílové skupiny.
+    Škola má appku Velamenu, přes kterou rodiče objednávají obědy. Chybějící
+    článek byl výdej: kuchařka musela u okénka ověřit, kdo si co objednal
+    – ručně, na papíře. Bylo to pomalé, dělaly se chyby a špatně se
+    dohledávalo, kolik obědů se má nakonec proplatit. Navíc appka umožňuje
+    objednat i trochu navíc, takže bylo potřeba mít přehled, které obědy
+    se reálně vydaly a které ne.
   </p>
   <p>
-    Na tomto projektu (v rámci <a href="https://almadesign.jobs.cz/" target="_blank" rel="noopener">UX Summer Campu</a>)
-    jsem pracovala v šestičleném designovém týmu. Postupně jsme spolu prošli
-    všemi fázemi designového procesu (Empathize, Define, Ideate, Prototype a Test).
-    Výsledný koncept jsme s kolegou prezentovali na závěrečném setkání.
-  </p>
-  <p>
-    Formulář jsme navrhovali pro technické a kreativní profesionály – lidi,
-    kteří uvažují logicky a na digitální produkty mají vysoké nároky. Dobře
-    navržené rozhraní pro ně není bonus, ale samozřejmost. Stačí jeden
-    zbytečný krok navíc a odpověď radši nedopíšou.
+    Řešení: dítě přiloží prst ke čtečce otisků a kuchařka na tabletu hned
+    vidí jeho jméno a objednané jídlo. Bez systému se to dnes pořád řeší
+    ručně na papíře – tak, jak to teď funguje na další pobočce (Dědina),
+    kam se má systém rozjet jako druhý krok.
   </p>
 
-  <h2>Výzkum: Affinity mapping<br>&amp; <em>tři insighty</em></h2>
+  <!-- 2. CO JSEM POSTAVILA -->
+  <h2>Co jsem <em>postavila</em></h2>
   <p>
-    Nezačínali jsme návrhem. Začínali jsme poslechem.
-  </p>
-  <p>
-    Nahrávky z uživatelských rozhovorů jsme rozebrali pomocí Affinity Mappingu
-    – klíčové myšlenky na lístečky, lístečky do shluků, shluky do insightů.
-    Tři věci se opakovaly napříč rozhovory:
-  </p>
-  <ul>
-    <li><strong>Variabilita příloh</strong> – ne jen PDF s životopisem, ale odkaz na portfolio, GitHub nebo LinkedIn.</li>
-    <li><strong>Volnost ve formě</strong> – někdo preferuje strukturované CV, jiný průvodní dopis nebo video.</li>
-    <li><strong>Čistý formulář</strong> – bez zbytečného textu, který odvádí pozornost od vyplňování.</li>
-  </ul>
-
-  <div class="case-img-block ratio-43">
-    <img src="affinity_mapping.png" alt="Affinity Mapping – výstup z uživatelských rozhovorů">
-  </div>
-  <p class="caption">Nahrávky → lístečky → insighty &ndash; výstup z Affinity Mappingu</p>
-
-  <div class="case-img-block ratio-43">
-    <img src="desinova_vyzva.png" alt="Designová výzva – definice problému">
-  </div>
-  <p class="caption">Designová výzva &ndash; výstup z fáze Define</p>
-
-  <h2>Ideation: Crazy 8's,<br><em>Metoda šesti klobouků</em> a dot voting</h2>
-  <p>
-    Na základě insightů jsme si definovali designovou výzvu a vyzkoušeli dvě metody.
-  </p>
-
-  <h3>Crazy 8's</h3>
-  <p>
-    Osm minut, osm nápadů, osm skic. Rychlé tempo záměrně nedovolí strávit
-    příliš dlouho u prvního návrhu.
-  </p>
-
-  <div class="case-img-block ratio-43">
-    <img src="crazy8s.png" alt="Crazy 8's – osm skic za osm minut">
-  </div>
-  <p class="caption">Osm návrhů za osm minut &ndash; výstup z Crazy 8's</p>
-
-  <h3>Metoda šesti klobouků</h3>
-  <p>
-    Metoda, která pomáhá hodnotit nápady z různých úhlů a vyhnout se skupinovému
-    myšlení.
-  </p>
-
-  <div class="case-img-block ratio-43">
-    <img src="sest_klobouku.png" alt="Metoda šesti klobouků – hodnocení nápadů z různých úhlů">
-  </div>
-  <p class="caption">Metoda šesti klobouků v praxi</p>
-
-  <p>
-    Na závěr dot voting: každý přidělil hlasy nejsilnějším skicám.
-    Z výsledků vznikl společný detailní náčrt, ze kterého si každý člen týmu odnesl
-    základ pro vlastní prototyp.
-  </p>
-
-  <h2>Prototyp: AI asistent<br>&amp; <em>dvoustupňový formulář</em></h2>
-  <p>
-    Každý člen týmu si ze společné skici udělal vlastní prototyp.
-    Moje dvě hlavní rozhodnutí (navrhnuté v Crazy 8's):
+    Je to systém v ostrém provozu, ne prototyp. Běží každý den v jídelně
+    na pobočce Hloubětín.
   </p>
 
   <div class="decision-grid">
     <div class="decision-card">
-      <div class="decision-label">Nápad 01</div>
-      <h3>AI textový asistent</h3>
-      <p>
-        Přímá nápověda v místě, kde uchazeči nejvíc tápou, u otázky
-        „Jakou hodnotu nám přinesete?". AI asistent pomáhal formulovat nebo
-        stylisticky upravit odpověď přímo ve formuláři.
-        V roce 2024 šlo o prvek, který na pracovních portálech spíše neexistoval.
-      </p>
+      <div class="decision-label">Server</div>
+      <h3>Raspberry Pi 5</h3>
+      <p>Node.js, WebSocket a PM2 pro běh na pozadí. Vzdálený přístup a správa
+      přes Tailscale, když zrovna nejsem na místě.</p>
     </div>
     <div class="decision-card">
-      <div class="decision-label">Nápad 02</div>
-      <h3>Rozbalovací menu pro nepovinné otázky</h3>
-      <p>
-        Rozšiřující sekci jsem schovala do rozbalovacího menu. Kdo spěchá,
-        odešle přihlášku za pár vteřin (jméno, e-mail, CV). Kdo chce dodat víc,
-        sekci rozbalí.
-      </p>
+      <div class="decision-label">Čtečka otisků</div>
+      <h3>2N Access Unit 2.0</h3>
+      <p>Napojená přes její Automation (push) – pull API by vyžadovalo licenci,
+      kterou škola nemá. Neznámí uživatelé čtečky se registrují automaticky.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Data</div>
+      <h3>Synchronizace s Bubble API</h3>
+      <p>Objednávky z appky Velamenu se každý den v 8:00 stáhnou přímo na Pi
+      (cron úloha) – kuchařka pak vidí aktuální stav.</p>
+    </div>
+    <div class="decision-card">
+      <div class="decision-label">Rozhraní</div>
+      <h3>Dva iPady v kiosk režimu</h3>
+      <p>Jeden u čtečky, druhý pro výdej. Vlastní jednoduché UI (font Nunito,
+      velké texty, automatický reset s odpočtem), spravované přes JAMF.</p>
     </div>
   </div>
 
-  <p>
-    Vedle těchto řešení přišel kolega se skvělým nápadem: přidat do formuláře
-    fotku a jméno konkrétní personalistky. Malý prvek, který formuláři dodá
-    lidský rozměr.
-  </p>
-
   <div class="case-img-block ratio-169">
-    <img src="skica_formular.png" alt="Prototyp formuláře – rozbalovací menu a AI asistent">
+    <div class="case-img-placeholder">Screenshot UI &#8211; doplní se</div>
   </div>
-  <p class="caption">Rozbalovací menu pro nepovinné otázky a AI asistent pro průvodní text</p>
+  <p class="caption">Rozhraní pro výdej &#8211; jméno a objednané jídlo na první pohled</p>
 
-  <div class="case-pdf-block">
-    <iframe src="flow_formular.pdf" title="Flow formuláře – před a po redesignu">
-      <p>Prohlédnout PDF: <a href="flow_formular.pdf" target="_blank" rel="noopener">flow_formular.pdf</a></p>
-    </iframe>
-  </div>
-  <p class="caption">Před a po redesignu &ndash; flow v formuláři</p>
-
-  <h2>Testování a <em>selhání hypotéz</em></h2>
+  <!-- 3. NEJTEZSI -->
+  <h2>Co bylo <em>nejtěžší</em></h2>
   <p>
-    Nejlepší prototyp prošel křížovým testováním – týmy testovaly navzájem
-    na reálných scénářích. Výsledky byly nepohodlné a velmi užitečné.
+    Nejtěžší nebyl kód, ale hardware, se kterým jsem předtím nikdy nepracovala.
   </p>
 
   <div class="highlight">
     <p>
-      Formulář měl správnou strukturu i logiku. Přesto jsme dvěma špatnými
-      frázemi rozhodili celý zážitek.
+      Umřelý NVMe disk uprostřed ladění, kabeláž, chlazení Pi, které běží
+      celý den v provozní jídelně, RTC modul, aby appka přežila výpadek
+      proudu – tohle všechno jsem se musela naučit za pochodu.
     </p>
   </div>
 
-  <h3>Nejasné copy</h3>
   <p>
-    Texty, které jsme zvolili, nebyly pro uživatele jednoznačné.
-    Pochopení vyžadovalo zbytečnou kognitivní práci.
+    Naučila jsem se i provozní stránku věci: nasazování přes <code>git pull</code>
+    a restart PM2, vzdálenou správu přes Tailscale, monitoring, jestli
+    systém v noci neopadl. Claude Code mi hodně pomohl rychle iterovat
+    na <code>server.js</code>, ale rozhodnutí, co má systém dělat, a ladění
+    přímo v jídelně bylo na mně.
   </p>
 
-  <h3>&bdquo;Zvyš svou šanci&ldquo; místo motivace vyvolala úzkost</h3>
+  <!-- 4. VYSLEDEK -->
+  <h2>Výsledek &amp; <em>co dál</em></h2>
   <p>
-    Název rozbalovací sekce zněl v našich hlavách motivačně.
-    Pro testované vyvolal opak: nevěděli, co přesně personalistka považuje
-    za důležité, a báli se, že když sekci nevyplní, budou automaticky
-    vyřazeni z výběrového řízení.
-  </p>
-
-  <h2>Co jsem si odnesla<br>&amp; <em>co by přišlo dál</em></h2>
-  <p>
-    Projekt skončil prezentací výsledného konceptu na závěrečném setkání,
-    kterou jsem vedla s kolegou.
+    Vývoj trval pár týdnů vibecodingu, pak následoval měsíc ladění přímo
+    v provozu – to je fáze, kde se ukázalo nejvíc: co appka nezvládá,
+    kdy čtečka nereaguje, jak dlouho vydrží baterie v tabletu.
   </p>
   <p>
-    Co jsem si odnesla: formulář může mít správnou logiku i strukturu –
-    a přesto kazit uživatelský zážitek. Stačí špatně zvolená slova. UX writing není
-    kosmetika přiložená k hotovému designu.
+    Systém dnes běží na pobočce Hloubětín a slouží jako šablona pro další
+    pobočku (Dědina), kam ho budu nasazovat jako další krok.
   </p>
 
   <div class="highlight">
     <p>
-      Testování ukázalo, kde je problém. Čas na další kolo ale už nebyl
-      – projekt skončil prezentací.
+      Veřejný odkaz na systém nemám &#8211; běží ve školní síti a pracuje
+      s daty dětí. Screenshoty a krátké video z provozu ale ráda ukážu.
     </p>
   </div>
-
-  <p>Co by přišlo dál:</p>
-  <ul>
-    <li>Přepsat microcopy celého formuláře a odbourat nátlakové formulace.</li>
-    <li>Znovu otestovat rozbalovací menu – ověřit, jestli nevytváří dojem, že bez jeho vyplnění se přihláška nevyplatí odeslat.</li>
-    <li>A pak otestovat znovu.</li>
-  </ul>
 
 </div>
 
 <div class="divider"></div>
 
 <div class="case-nav">
-  <a href="h2gp.html">← H2 Grand Prix</a>
-  <a href="velamenu.html" class="next">Výdejní systém obědů →</a>
+  <a href="formulare.html">← Redesign formuláře</a>
+  <a href="index.html#prace" class="next">Všechny projekty →</a>
 </div>
 
 <div class="divider"></div>
@@ -657,9 +616,19 @@
 
   document.querySelectorAll('.case-img-block img').forEach(function(img) {
     img.parentElement.addEventListener('click', function() {
-      if (img.complete && img.naturalWidth > 0) openLightbox(img.src, img.alt);
+      openLightbox(img.src, img.alt);
     });
   });
+
+  var coverBlock = document.querySelector('.case-cover-img[data-zoomable]');
+  if (coverBlock) {
+    var coverImg = coverBlock.querySelector('img');
+    if (coverImg) {
+      coverBlock.addEventListener('click', function() {
+        openLightbox(coverImg.src, coverImg.alt);
+      });
+    }
+  }
 
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) closeLightbox();
